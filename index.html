@@ -2832,7 +2832,7 @@ window.SUBJECTS.portugues = {
           dica: "Se a prova perguntar 'o texto diz que...', é explícita. Se perguntar 'pode-se concluir que...', é inferência."
         }
       ],
-      video: { yt: "DYCcyb5VAu4", titulo: "Leitura, interpretação e inferência de texto" },
+      video: { drive: "1HYAq2KFCIlNeM9sJI55vy27ZenBt_j_L", titulo: "Leitura, interpretação e inferência de texto" },
       flashcards: [
         { frente: "O que é um texto informativo?", verso: "Um texto cujo objetivo principal é informar com fatos e dados reais." },
         { frente: "O que significa 'inferir' uma informação?", verso: "Descobrir algo que não está escrito diretamente, mas que pode ser concluído pelas pistas do texto." },
@@ -2843,19 +2843,31 @@ window.SUBJECTS.portugues = {
     {
       id: "morfologia",
       titulo: "Morfologia",
-      subtitulo: "Substantivo, adjetivo e pronomes",
+      subtitulo: "Substantivo, adjetivo, sufixos e pronomes",
       slides: [
         {
           icone: "🏷️",
           titulo: "Substantivo: o nome das coisas",
-          corpo: "É a classe de palavras que dá <b>nome</b> a seres, objetos, lugares, sentimentos e ideias.<br><br>Exemplos: <b>cachorro, escola, alegria, mesa.</b>",
+          corpo: "É a classe de palavras que dá <b>nome</b> a seres, objetos, lugares, sentimentos e ideias.<br><br>Exemplos: <b>cachorro, escola, alegria, mesa.</b><br><br>Também são substantivos os nomes de personagens de histórias: <b>fada, bruxa, príncipe, dragão, gigante.</b>",
           dica: "Pergunta rápida: se a palavra responde 'o quê?' ou 'quem?', provavelmente é substantivo."
         },
         {
           icone: "🎨",
           titulo: "Adjetivo: a característica",
-          corpo: "É a palavra que dá uma <b>característica</b> ao substantivo — descreve como ele é.<br><br>Exemplos: cachorro <b>peludo</b>, escola <b>grande</b>, alegria <b>contagiante</b>.",
+          corpo: "É a palavra que dá uma <b>característica</b> ao substantivo — descreve como ele é.<br><br>Exemplos: cachorro <b>peludo</b>, escola <b>grande</b>, alegria <b>contagiante</b>.<br><br>Trocar o adjetivo pode até mudar o <b>clima</b> de um texto: 'fada <b>linda</b>' soa doce, mas 'bruxa <b>tenebrosa</b>' soa de terror.",
           dica: "Adjetivo sempre 'qualifica' um substantivo. Pergunte: 'como é esse substantivo?' — a resposta é o adjetivo."
+        },
+        {
+          icone: "🧪",
+          titulo: "Sufixo -oso/-osa: transforma substantivo em adjetivo",
+          corpo: "Juntando <b>-oso</b> (ou -osa, no feminino) ao final de um substantivo, você cria um adjetivo!<br><br><b>fama</b> → fam<b>oso</b><br><b>perigo</b> → perig<b>oso</b><br><b>amor</b> → amor<b>osa</b><br><b>charme</b> → charm<b>osa</b>",
+          dica: "Truque rápido: pense no substantivo primeiro (a 'coisa'), depois cole -oso/-osa no final pra virar a 'característica de ter aquilo'."
+        },
+        {
+          icone: "🔬",
+          titulo: "Sufixo -ez/-eza: transforma adjetivo em substantivo",
+          corpo: "Esse é o caminho contrário: juntando <b>-ez</b> ou <b>-eza</b> ao final de um adjetivo, você cria um substantivo!<br><br><b>rico</b> → riqu<b>eza</b><br><b>pobre</b> → pobr<b>eza</b><br><b>tímido</b> → timid<b>ez</b><br><b>rápido</b> → rapid<b>ez</b>",
+          dica: "Não confunda os dois sufixos: -oso/-osa parte de um SUBSTANTIVO e cria um ADJETIVO. -ez/-eza parte de um ADJETIVO e cria um SUBSTANTIVO — é o caminho invertido!"
         },
         {
           icone: "🔄",
@@ -2870,135 +2882,357 @@ window.SUBJECTS.portugues = {
           dica: "Exemplo: 'manga' pode ser fruta ou parte de uma camisa — só o contexto da frase revela qual é."
         }
       ],
-      video: { yt: "GM0XRcaW00c", titulo: "Classes gramaticais — substantivo, adjetivo e pronome" },
+      video: { drive: "1CkIE33AEGPH8K0jW-dUa0DHqWpfvy6u7", titulo: "Classes gramaticais, sufixos e pronomes" },
       flashcards: [
         { frente: "O que é um substantivo?", verso: "Palavra que dá nome a seres, objetos, lugares, sentimentos ou ideias." },
         { frente: "O que é um adjetivo?", verso: "Palavra que descreve uma característica do substantivo." },
+        { frente: "Como o sufixo -oso/-osa transforma uma palavra?", verso: "Transforma um SUBSTANTIVO em ADJETIVO. Ex: fama → famoso; amor → amorosa." },
+        { frente: "Como o sufixo -ez/-eza transforma uma palavra?", verso: "Transforma um ADJETIVO em SUBSTANTIVO. Ex: rico → riqueza; tímido → timidez." },
+        { frente: "Qual substantivo dá origem ao adjetivo 'perigoso'?", verso: "'Perigo' + sufixo -oso = perigoso." },
+        { frente: "Qual adjetivo dá origem ao substantivo 'pobreza'?", verso: "'Pobre' + sufixo -eza = pobreza." },
         { frente: "O que é um pronome e pra que serve?", verso: "Palavra que substitui o substantivo, evitando repetição no texto." },
         { frente: "Por que o contexto é importante para entender o significado de uma palavra?", verso: "Porque a mesma palavra pode ter sentidos diferentes dependendo da frase em que está." }
+      ]
+    },
+    {
+      id: "coesao-textual",
+      titulo: "Coesão textual",
+      subtitulo: "Pronomes e sinônimos para retomar informação",
+      slides: [
+        {
+          icone: "🧷",
+          titulo: "O que é coesão textual?",
+          corpo: "Coesão é a 'cola' que liga as partes de um texto, evitando repetir as mesmas palavras o tempo todo.<br><br>Uma das formas de fazer isso é <b>retomar</b> um substantivo já citado, usando outra palavra no lugar dele.",
+          dica: "Texto sem coesão fica cansativo de ler: 'O cão correu. O cão latiu. O cão pulou.' Repetir 'o cão' toda hora deixa o texto preso."
+        },
+        {
+          icone: "🔄",
+          titulo: "Retomando com pronome",
+          corpo: "A forma mais comum de retomar um substantivo é usando um <b>pronome</b> no lugar dele.<br><br>Exemplo: 'As peças dos jogadores devem ser colocadas no tabuleiro. <b>Elas</b> ficam nas extremidades.' (elas = as peças)",
+          dica: "Pergunte: 'esse pronome está no lugar de qual substantivo, dito antes?' — essa pergunta aparece direto em prova."
+        },
+        {
+          icone: "🔁",
+          titulo: "Retomando com sinônimo (outro substantivo)",
+          corpo: "Você também pode retomar um substantivo usando <b>outro substantivo</b> com sentido parecido, em vez de um pronome.<br><br>Exemplo: 'Os jogadores se posicionam no tabuleiro.' → pode-se repetir a ideia usando '<b>os participantes</b>' no lugar de 'jogadores'.",
+          dica: "Esse tipo de troca também evita repetição, mas usando um substantivo diferente — não só pronome!"
+        },
+        {
+          icone: "👻",
+          titulo: "Substantivo implícito (que 'some' mas continua presente)",
+          corpo: "Às vezes, o substantivo nem precisa aparecer de novo — ele fica <b>implícito</b> (escondido) em uma expressão, mas a gente entende que ele está lá.<br><br>Exemplo: 'As peças de um jogador' e 'as do adversário' → o substantivo 'peças' está implícito na segunda expressão, mesmo sem aparecer escrito.",
+          dica: "Pergunta de prova clássica: 'esse substantivo está implícito em qual trecho?' — leia a frase imaginando a palavra escondida lá dentro."
+        }
+      ],
+      video: { drive: "17vnMacjfk0GGeT3-hJLsz3toJb_ScZxN", titulo: "Coesão textual: pronomes e sinônimos" },
+      flashcards: [
+        { frente: "O que é coesão textual?", verso: "É a 'cola' que liga as partes do texto, evitando repetição excessiva de palavras." },
+        { frente: "Quais são as duas formas de retomar um substantivo sem repeti-lo?", verso: "Usando um pronome (ex: ela, eles) ou usando outro substantivo com sentido parecido (sinônimo)." },
+        { frente: "Na frase 'Os jogadores entraram. Os participantes estavam ansiosos', como 'participantes' está funcionando?", verso: "Como um sinônimo que retoma 'jogadores', evitando repetir a mesma palavra." },
+        { frente: "O que significa um substantivo estar 'implícito' em uma expressão?", verso: "Significa que ele não aparece escrito, mas pode ser entendido como presente, escondido no sentido da frase." }
       ]
     }
   ],
   questoes: [
     {
       pergunta: "Leia: 'Marcos chegou em casa todo molhado, com o guarda-chuva quebrado nas mãos.' O que se pode INFERIR sobre o clima naquele dia?",
-      opcoes: ["Provavelmente estava chovendo forte, e o vento pode ter quebrado o guarda-chuva", "Estava um dia de muito sol e calor", "Marcos estava em uma piscina", "O texto não permite nenhuma conclusão sobre o clima"],
-      correta: 0,
+      opcoes: ["Estava um dia de muito sol e calor","Provavelmente estava chovendo forte, e o vento pode ter quebrado o guarda-chuva","Marcos estava em uma piscina","O texto não permite nenhuma conclusão sobre o clima"],
+      correta: 1,
       explicacao: "Apesar do texto não dizer diretamente 'estava chovendo', as pistas (molhado, guarda-chuva quebrado) permitem inferir que estava chovendo forte, possivelmente com vento, o que explicaria o guarda-chuva danificado."
     },
     {
       pergunta: "Na frase 'A menina esperta resolveu o problema rapidamente', qual palavra é o ADJETIVO?",
-      opcoes: ["Esperta", "Menina", "Resolveu", "Problema"],
-      correta: 0,
+      opcoes: ["Menina","Esperta","Resolveu","Problema"],
+      correta: 1,
       explicacao: "'Esperta' é o adjetivo, pois descreve uma característica do substantivo 'menina'. 'Menina' e 'problema' são substantivos; 'resolveu' é verbo."
     },
     {
       pergunta: "Leia: 'Ana terminou de estudar e fechou o caderno com um sorriso no rosto.' O que essa frase permite inferir sobre o sentimento de Ana?",
-      opcoes: ["Que ela provavelmente está satisfeita ou confiante com os estudos", "Que ela está completamente triste", "Que ela odeia estudar", "Que ela não entendeu nada do que estudou"],
-      correta: 0,
+      opcoes: ["Que ela está completamente triste","Que ela odeia estudar","Que ela provavelmente está satisfeita ou confiante com os estudos","Que ela não entendeu nada do que estudou"],
+      correta: 2,
       explicacao: "O sorriso no rosto, embora o texto não diga diretamente 'Ana está feliz', é uma pista que permite inferir um sentimento de satisfação ou confiança em relação ao que estudou."
     },
     {
       pergunta: "Na frase 'Pedro e Maria, eles foram ao mercado e compraram frutas para o lanche', qual palavra é um PRONOME que substitui 'Pedro e Maria'?",
-      opcoes: ["Eles", "Mercado", "Compraram", "Frutas"],
-      correta: 0,
+      opcoes: ["Mercado","Eles","Compraram","Frutas"],
+      correta: 1,
       explicacao: "'Eles' é o pronome que substitui 'Pedro e Maria', evitando repetir os nomes na frase."
     },
     {
       pergunta: "Considere a frase: 'O texto informativo apresenta dados sobre a poluição dos rios, mas não menciona soluções.' Isso é um exemplo de informação EXPLÍCITA ou uma INFERÊNCIA?",
-      opcoes: ["É uma informação explícita, pois está escrita diretamente no texto", "É uma inferência, pois precisa ser deduzida", "Não é nem explícita, nem inferência", "É uma opinião pessoal do leitor, sem relação com o texto"],
-      correta: 0,
+      opcoes: ["É uma inferência, pois precisa ser deduzida","Não é nem explícita, nem inferência","É uma opinião pessoal do leitor, sem relação com o texto","É uma informação explícita, pois está escrita diretamente no texto"],
+      correta: 3,
       explicacao: "Essa informação é explícita porque está dita diretamente: o texto afirma claramente que apresenta dados sobre poluição, mas não menciona soluções — não é preciso deduzir nada além do que está escrito."
     },
     {
       pergunta: "Na frase 'A casa antiga, abandonada há anos, ainda guarda segredos', quais são os adjetivos presentes?",
-      opcoes: ["Antiga e abandonada", "Casa e segredos", "Guarda e anos", "Ainda e há"],
-      correta: 0,
+      opcoes: ["Casa e segredos","Guarda e anos","Antiga e abandonada","Ainda e há"],
+      correta: 2,
       explicacao: "'Antiga' e 'abandonada' são adjetivos, pois descrevem características do substantivo 'casa'. 'Casa' e 'segredos' são substantivos."
     },
     {
       pergunta: "Leia: 'Quando chegou à escola, Lucas percebeu que todos os colegas estavam vestidos de forma diferente do habitual, com fantasias coloridas.' O que se pode inferir sobre o motivo dessa cena?",
-      opcoes: ["Provavelmente é dia de festa ou comemoração especial na escola", "Lucas chegou à escola errada", "Todos os alunos foram expulsos da escola", "A escola fechou definitivamente naquele dia"],
-      correta: 0,
+      opcoes: ["Lucas chegou à escola errada","Todos os alunos foram expulsos da escola","Provavelmente é dia de festa ou comemoração especial na escola","A escola fechou definitivamente naquele dia"],
+      correta: 2,
       explicacao: "As pistas do texto (fantasias coloridas, diferente do habitual) permitem inferir que provavelmente é um dia de festa ou comemoração especial na escola, mesmo sem o texto afirmar isso diretamente."
     },
     {
       pergunta: "Na frase 'O cachorro correu até ela e a abraçou com o focinho', a palavra 'ela' é um substantivo ou um pronome? Por quê?",
-      opcoes: ["É um pronome, pois substitui um substantivo (uma pessoa) mencionado anteriormente no texto", "É um substantivo, pois dá nome a um objeto", "É um adjetivo, pois descreve uma característica", "É um verbo, pois indica uma ação"],
+      opcoes: ["É um pronome, pois substitui um substantivo (uma pessoa) mencionado anteriormente no texto","É um substantivo, pois dá nome a um objeto","É um adjetivo, pois descreve uma característica","É um verbo, pois indica uma ação"],
       correta: 0,
       explicacao: "'Ela' é um pronome, pois substitui o nome de uma pessoa (substantivo) que foi mencionada antes no texto, evitando a repetição do nome."
     },
     {
       pergunta: "Leia o início de um texto informativo: 'Segundo dados do IBGE, a população brasileira ultrapassou 210 milhões de habitantes em 2024.' Qual é a função principal desse trecho?",
-      opcoes: ["Informar o leitor com um dado factual e verificável sobre a população", "Contar uma história de ficção sobre o Brasil", "Expressar uma opinião pessoal sobre a população brasileira", "Convencer o leitor a mudar de país"],
-      correta: 0,
+      opcoes: ["Contar uma história de ficção sobre o Brasil","Informar o leitor com um dado factual e verificável sobre a população","Expressar uma opinião pessoal sobre a população brasileira","Convencer o leitor a mudar de país"],
+      correta: 1,
       explicacao: "O trecho cita uma fonte (IBGE) e apresenta um dado numérico concreto — características típicas de um texto informativo, cujo objetivo é informar com fatos verificáveis."
     },
     {
       pergunta: "Em qual destas frases a palavra destacada é um SUBSTANTIVO, e não um adjetivo?",
-      opcoes: ["A AMIZADE é importante na vida de todos.", "Ela é uma pessoa muito AMIGA.", "O dia estava ENSOLARADO.", "A roupa ficou MOLHADA na chuva."],
-      correta: 0,
+      opcoes: ["Ela é uma pessoa muito AMIGA.","O dia estava ENSOLARADO.","A roupa ficou MOLHADA na chuva.","A AMIZADE é importante na vida de todos."],
+      correta: 3,
       explicacao: "'Amizade' é um substantivo, pois dá nome a um sentimento/ideia abstrata. As demais palavras (amiga, ensolarado, molhada) são adjetivos, pois descrevem características."
     },
     {
       pergunta: "Leia: 'Depois de horas treinando, o time finalmente ergueu o troféu, e o técnico chorou de emoção.' O que se pode inferir sobre o resultado da partida?",
-      opcoes: ["O time provavelmente venceu uma competição importante", "O time perdeu a partida", "Não houve nenhuma partida ou competição", "O técnico estava triste por uma derrota"],
+      opcoes: ["O time provavelmente venceu uma competição importante","O time perdeu a partida","Não houve nenhuma partida ou competição","O técnico estava triste por uma derrota"],
       correta: 0,
       explicacao: "As pistas do texto (ergueu o troféu, técnico chorou de emoção) permitem inferir que o time venceu uma competição importante, mesmo sem o texto dizer diretamente 'o time ganhou'."
     },
     {
       pergunta: "Na frase 'Aquele livro, eu já li duas vezes', a palavra 'eu' exerce qual função?",
-      opcoes: ["É um pronome que indica a pessoa que pratica a ação de ler", "É um substantivo que nomeia um objeto", "É um adjetivo que caracteriza o livro", "É uma palavra sem função gramatical na frase"],
-      correta: 0,
+      opcoes: ["É um substantivo que nomeia um objeto","É um pronome que indica a pessoa que pratica a ação de ler","É um adjetivo que caracteriza o livro","É uma palavra sem função gramatical na frase"],
+      correta: 1,
       explicacao: "'Eu' é um pronome pessoal, que indica quem pratica a ação (ler), substituindo a necessidade de repetir o nome da pessoa."
     },
     {
       pergunta: "Por que um texto informativo geralmente evita expressar opiniões pessoais do autor?",
-      opcoes: ["Porque seu objetivo principal é apresentar fatos e dados de forma neutra e verificável", "Porque textos informativos são sempre escritos em primeira pessoa", "Porque opiniões pessoais tornam o texto mais informativo", "Porque textos informativos nunca têm autor"],
+      opcoes: ["Porque seu objetivo principal é apresentar fatos e dados de forma neutra e verificável","Porque textos informativos são sempre escritos em primeira pessoa","Porque opiniões pessoais tornam o texto mais informativo","Porque textos informativos nunca têm autor"],
       correta: 0,
       explicacao: "O texto informativo busca apresentar fatos de forma neutra e objetiva, para que o leitor receba informações confiáveis — diferente de um texto de opinião, que expressa o ponto de vista do autor."
     },
     {
       pergunta: "Leia: 'A sala estava em silêncio total quando a professora entrou carregando os resultados da prova nas mãos.' Que sentimento dos alunos pode ser inferido por esse silêncio?",
-      opcoes: ["Provavelmente nervosismo ou ansiedade pelo resultado", "Alegria descontrolada e gritos de festa", "Total desinteresse pelo resultado da prova", "Sono profundo de todos os alunos"],
-      correta: 0,
+      opcoes: ["Alegria descontrolada e gritos de festa","Total desinteresse pelo resultado da prova","Provavelmente nervosismo ou ansiedade pelo resultado","Sono profundo de todos os alunos"],
+      correta: 2,
       explicacao: "O silêncio total ao ver a professora com os resultados da prova é uma pista forte de nervosismo ou ansiedade, mesmo que o texto não use essas palavras diretamente — é uma inferência baseada no comportamento descrito."
     },
     {
       pergunta: "Identifique o substantivo, o adjetivo e o pronome na frase: 'Ela comprou um vestido azul muito bonito.'",
-      opcoes: ["Substantivo: vestido; adjetivos: azul e bonito; pronome: ela", "Substantivo: ela; adjetivo: vestido; pronome: azul", "Substantivo: azul; adjetivo: ela; pronome: bonito", "Substantivo: bonito; adjetivo: vestido; pronome: comprou"],
-      correta: 0,
+      opcoes: ["Substantivo: ela; adjetivo: vestido; pronome: azul","Substantivo: vestido; adjetivos: azul e bonito; pronome: ela","Substantivo: azul; adjetivo: ela; pronome: bonito","Substantivo: bonito; adjetivo: vestido; pronome: comprou"],
+      correta: 1,
       explicacao: "'Vestido' é o substantivo (nome do objeto); 'azul' e 'bonito' são adjetivos (características do vestido); 'ela' é o pronome (substitui o nome de uma pessoa)."
     },
     {
       pergunta: "Por que, em uma questão de prova, a diferença entre 'o texto diz que...' e 'pode-se concluir que...' é importante?",
-      opcoes: ["Porque a primeira pede uma informação explícita (escrita no texto) e a segunda pede uma inferência (deduzida a partir de pistas)", "Porque as duas perguntas sempre têm a mesma resposta", "Porque a segunda pergunta sempre é mais fácil de responder", "Porque ambas pedem apenas opinião pessoal, sem relação com o texto"],
-      correta: 0,
+      opcoes: ["Porque as duas perguntas sempre têm a mesma resposta","Porque a segunda pergunta sempre é mais fácil de responder","Porque a primeira pede uma informação explícita (escrita no texto) e a segunda pede uma inferência (deduzida a partir de pistas)","Porque ambas pedem apenas opinião pessoal, sem relação com o texto"],
+      correta: 2,
       explicacao: "Essa diferença é fundamental: 'o texto diz que' pede uma informação explícita, encontrada diretamente nas palavras do texto; já 'pode-se concluir que' pede uma inferência, uma conclusão baseada em pistas, não escrita literalmente."
     },
     {
       pergunta: "Na frase 'Os alunos estudiosos sempre tiram boas notas', qual é a função da palavra 'estudiosos'?",
-      opcoes: ["É um adjetivo que caracteriza o substantivo 'alunos'", "É um substantivo que nomeia uma pessoa", "É um pronome que substitui 'alunos'", "É um verbo que indica uma ação"],
-      correta: 0,
+      opcoes: ["É um substantivo que nomeia uma pessoa","É um adjetivo que caracteriza o substantivo 'alunos'","É um pronome que substitui 'alunos'","É um verbo que indica uma ação"],
+      correta: 1,
       explicacao: "'Estudiosos' é um adjetivo, pois descreve uma característica do substantivo 'alunos' — indicando como eles são."
     },
     {
       pergunta: "Leia: 'O céu escureceu rapidamente, e um vento forte começou a derrubar as folhas das árvores.' O que se pode inferir sobre o que está prestes a acontecer?",
-      opcoes: ["Provavelmente vai chover ou uma tempestade está se formando", "O dia vai ficar mais ensolarado", "Está prestes a nevar em uma região tropical", "Nada está prestes a acontecer, o clima está estável"],
+      opcoes: ["Provavelmente vai chover ou uma tempestade está se formando","O dia vai ficar mais ensolarado","Está prestes a nevar em uma região tropical","Nada está prestes a acontecer, o clima está estável"],
       correta: 0,
       explicacao: "As pistas (céu escurecendo, vento forte) sugerem fortemente a chegada de uma chuva ou tempestade, mesmo que o texto não afirme isso diretamente — essa é uma inferência baseada em sinais comuns da natureza."
     },
     {
       pergunta: "Em qual destas frases a palavra sublinhada poderia ter um SIGNIFICADO diferente dependendo do contexto?",
-      opcoes: ["Ele comeu uma MANGA deliciosa no almoço.", "A AMIZADE deles durou anos.", "A criança estava muito FELIZ.", "O carro estava muito SUJO."],
-      correta: 0,
+      opcoes: ["A AMIZADE deles durou anos.","A criança estava muito FELIZ.","O carro estava muito SUJO.","Ele comeu uma MANGA deliciosa no almoço."],
+      correta: 3,
       explicacao: "'Manga' é um exemplo clássico de palavra com múltiplos significados (fruta ou parte de uma roupa) — o contexto da frase é o que define qual sentido está sendo usado."
     },
     {
       pergunta: "Por que pronomes são importantes para a coesão (a 'cola' que liga as partes) de um texto?",
-      opcoes: ["Porque evitam a repetição excessiva dos mesmos substantivos, tornando o texto mais fluido", "Porque pronomes sempre tornam o texto mais confuso", "Porque pronomes substituem apenas adjetivos, nunca substantivos", "Porque pronomes não têm relação com a coesão textual"],
+      opcoes: ["Porque evitam a repetição excessiva dos mesmos substantivos, tornando o texto mais fluido","Porque pronomes sempre tornam o texto mais confuso","Porque pronomes substituem apenas adjetivos, nunca substantivos","Porque pronomes não têm relação com a coesão textual"],
       correta: 0,
       explicacao: "Os pronomes evitam a repetição constante dos mesmos substantivos ao longo de um texto, tornando a leitura mais fluida e natural — por isso são fundamentais para a coesão textual."
+    },
+    {
+      pergunta: "Qual adjetivo é formado a partir do substantivo 'fama', usando o sufixo -oso?",
+      opcoes: ["Famosidade","Famar","Famante","Famoso"],
+      correta: 3,
+      explicacao: "O sufixo -oso se junta ao substantivo 'fama' formando o adjetivo 'famoso', que significa 'que tem fama'."
+    },
+    {
+      pergunta: "O adjetivo 'amorosa' foi formado a partir de qual substantivo, usando o sufixo -osa?",
+      opcoes: ["Amor","Amizade","Amar","Amante"],
+      correta: 2,
+      explicacao: "'Amorosa' vem do substantivo 'amor' mais o sufixo -osa (no feminino), formando o adjetivo que significa 'que demonstra amor'."
+    },
+    {
+      pergunta: "O substantivo 'riqueza' é formado a partir de qual adjetivo, usando o sufixo -eza?",
+      opcoes: ["Riquíssimo","Enriquecer","Rico","Ricaço"],
+      correta: 2,
+      explicacao: "'Riqueza' vem do adjetivo 'rico' mais o sufixo -eza, formando o substantivo que indica a qualidade de ser rico."
+    },
+    {
+      pergunta: "Qual substantivo é formado a partir do adjetivo 'tímido', usando o sufixo -ez?",
+      opcoes: ["Timidez","Timidismo","Timidante","Timidoso"],
+      correta: 0,
+      explicacao: "'Timidez' vem do adjetivo 'tímido' mais o sufixo -ez, formando o substantivo que indica a qualidade de ser tímido."
+    },
+    {
+      pergunta: "Os sufixos -oso/-osa e -ez/-eza funcionam em direções diferentes. Qual afirmação está CORRETA?",
+      opcoes: ["-oso/-osa transforma substantivo em adjetivo; -ez/-eza transforma adjetivo em substantivo","-oso/-osa transforma adjetivo em substantivo; -ez/-eza transforma substantivo em adjetivo","Os dois sufixos sempre transformam substantivo em adjetivo","Os dois sufixos sempre transformam adjetivo em substantivo"],
+      correta: 0,
+      explicacao: "São caminhos opostos: -oso/-osa parte de um substantivo (perigo) e cria um adjetivo (perigoso). Já -ez/-eza parte de um adjetivo (pobre) e cria um substantivo (pobreza)."
+    },
+    {
+      pergunta: "Qual é o adjetivo formado a partir do substantivo 'charme', usando o sufixo -osa?",
+      opcoes: ["Charmez","Charmosa","Charmante","Charmento"],
+      correta: 1,
+      explicacao: "'Charme' + sufixo -osa forma o adjetivo 'charmosa', que significa 'que tem charme'."
+    },
+    {
+      pergunta: "Qual substantivo é formado a partir do adjetivo 'rápido', usando o sufixo -ez?",
+      opcoes: ["Rapidez","Rapidoso","Rapidante","Rapidismo"],
+      correta: 0,
+      explicacao: "'Rápido' + sufixo -ez forma o substantivo 'rapidez', indicando a qualidade de ser rápido."
+    },
+    {
+      pergunta: "Na frase 'As peças dos jogadores devem ser colocadas no tabuleiro. Elas ficam nas extremidades', a palavra 'Elas' retoma qual substantivo?",
+      opcoes: ["Jogadores","Peças","Tabuleiro","Extremidades"],
+      correta: 1,
+      explicacao: "'Elas' é um pronome que substitui 'as peças', evitando repetir essa expressão na segunda frase."
+    },
+    {
+      pergunta: "Considere: 'Os jogadores entraram em campo. Os participantes pareciam ansiosos.' Como a palavra 'participantes' está funcionando no texto?",
+      opcoes: ["Como um sinônimo que retoma 'jogadores', evitando repetição","Como um pronome que substitui 'campo'","Como um adjetivo que descreve 'jogadores'","Como uma palavra sem relação com o restante do texto"],
+      correta: 0,
+      explicacao: "'Participantes' é outro substantivo, usado como sinônimo de 'jogadores', para retomar a ideia sem repetir exatamente a mesma palavra — isso é coesão textual."
+    },
+    {
+      pergunta: "Na expressão 'as peças de um jogador' e 'as do adversário', o substantivo 'peças' está implícito na segunda expressão. O que isso significa?",
+      opcoes: ["Que 'peças' não aparece escrito na segunda expressão, mas pode ser entendido como presente","Que 'peças' foi escrito duas vezes na frase","Que a segunda expressão não tem nenhum substantivo","Que 'adversário' substitui completamente o sentido de 'peças'"],
+      correta: 0,
+      explicacao: "Um substantivo implícito é aquele que não aparece escrito, mas está subentendido pelo contexto: 'as do adversário' significa 'as peças do adversário', mesmo sem repetir a palavra 'peças'."
+    },
+    {
+      pergunta: "Leia: 'Apesar do nome difícil, esse jogo de origem chinesa é bem simples e seu tabuleiro, mais fácil ainda de fazer em casa. ___ tem a forma de um X.' Qual pronome completa corretamente a lacuna, retomando 'tabuleiro'?",
+      opcoes: ["Ela","Eles","Elas","Ele"],
+      correta: 3,
+      explicacao: "'Tabuleiro' é uma palavra masculina e singular, então o pronome correto para retomá-la é 'Ele'."
+    },
+    {
+      pergunta: "Qual é a principal vantagem de usar pronomes ou sinônimos para retomar um substantivo já citado em um texto?",
+      opcoes: ["Tornar o texto mais difícil de entender","Evitar a repetição excessiva da mesma palavra, tornando o texto mais fluido","Aumentar o número de palavras do texto sem necessidade","Confundir o leitor sobre quem está sendo mencionado"],
+      correta: 1,
+      explicacao: "Retomar substantivos com pronomes ou sinônimos evita repetições cansativas e torna a leitura mais natural e agradável — essa é a função da coesão textual."
+    },
+    {
+      pergunta: "Na frase 'Cada jogador deve mover sua peça pelas linhas do tabuleiro, com o objetivo de encurralar as peças do adversário até que ELAS não possam mais se mover', a palavra 'ELAS' retoma qual trecho?",
+      opcoes: ["O tabuleiro","As linhas","As peças do adversário","O jogador"],
+      correta: 2,
+      explicacao: "'Elas' substitui 'as peças do adversário', mencionado imediatamente antes, evitando repetir essa expressão inteira."
+    },
+    {
+      pergunta: "Em um texto sobre um livro, aparece: 'O livro foi traduzido preservando o estilo do original. A obra retrata o mundo da fantasia.' Qual palavra retoma 'o livro' na segunda frase?",
+      opcoes: ["O estilo","O original","A fantasia","A obra"],
+      correta: 3,
+      explicacao: "'A obra' é um substantivo sinônimo de 'o livro', usado para retomar a ideia sem repetir exatamente a mesma palavra — um recurso de coesão textual."
+    },
+    {
+      pergunta: "Em qual destas frases há um substantivo que nomeia um personagem de conto de encantamento?",
+      opcoes: ["O dia estava muito ensolarado.","Ela correu rapidamente até a escola.","O livro estava sobre a mesa.","A bruxa preparava uma poção misteriosa."],
+      correta: 3,
+      explicacao: "'Bruxa' é um substantivo que nomeia um personagem típico de contos de encantamento, assim como fada, príncipe, dragão e gigante."
+    },
+    {
+      pergunta: "Leia: 'Marina abriu a porta e viu a sala completamente revirada, com livros espalhados pelo chão.' O que se pode inferir sobre o que aconteceu na sala?",
+      opcoes: ["A sala estava perfeitamente organizada","Marina tinha acabado de limpar a sala","Não há nenhuma pista sobre o estado da sala","Provavelmente alguém ou algo causou uma bagunça ou confusão no local"],
+      correta: 3,
+      explicacao: "As pistas (sala revirada, livros espalhados) indicam que algo causou uma bagunça ou confusão, mesmo que o texto não explique diretamente o motivo."
+    },
+    {
+      pergunta: "Qual é a diferença principal entre um texto informativo e um texto de ficção?",
+      opcoes: ["O informativo é sempre mais curto que a ficção","A ficção nunca tem personagens","O informativo apresenta fatos reais; a ficção conta uma história inventada","Não existe diferença entre os dois tipos de texto"],
+      correta: 2,
+      explicacao: "O texto informativo tem como objetivo apresentar fatos e dados reais sobre um assunto, enquanto o texto de ficção conta uma história inventada, mesmo que baseada em fatos reais."
+    },
+    {
+      pergunta: "Na frase 'O cachorro peludo e brincalhão correu até a criança', quantos adjetivos caracterizam o substantivo 'cachorro'?",
+      opcoes: ["Um: cachorro","Três: cachorro, criança e correu","Dois: peludo e brincalhão","Nenhum adjetivo está presente na frase"],
+      correta: 2,
+      explicacao: "'Peludo' e 'brincalhão' são os dois adjetivos que descrevem características do substantivo 'cachorro'."
+    },
+    {
+      pergunta: "Leia: 'Depois de muito esforço, o time finalmente alcançou a final do campeonato, mas perdeu por um gol de diferença.' Que sentimento pode ser inferido sobre o time após o jogo?",
+      opcoes: ["Alegria absoluta por ter vencido o campeonato","Provavelmente frustração ou tristeza por ter perdido tão perto da vitória","Indiferença total ao resultado do jogo","O time nem chegou a jogar a final"],
+      correta: 1,
+      explicacao: "As pistas (muito esforço, perdeu por um gol de diferença) sugerem frustração ou tristeza, já que o time chegou perto da vitória mas não conseguiu vencer."
+    },
+    {
+      pergunta: "Qual destas palavras é um substantivo formado com o sufixo -eza?",
+      opcoes: ["Pobre","Pobreza","Empobrecer","Pobrezinho"],
+      correta: 1,
+      explicacao: "'Pobreza' é o substantivo formado a partir do adjetivo 'pobre' mais o sufixo -eza, indicando a qualidade de ser pobre."
+    },
+    {
+      pergunta: "Qual destas palavras é um adjetivo formado com o sufixo -oso?",
+      opcoes: ["Perigoso","Perigo","Perigar","Perigosamente"],
+      correta: 0,
+      explicacao: "'Perigoso' é o adjetivo formado a partir do substantivo 'perigo' mais o sufixo -oso, indicando que algo tem perigo."
+    },
+    {
+      pergunta: "Leia: 'Lúcia abriu a geladeira e encontrou apenas um pote de iogurte vazio e algumas folhas murchas.' O que se pode inferir sobre a situação?",
+      opcoes: ["A geladeira está completamente cheia de alimentos frescos","Lúcia acabou de fazer compras no mercado","Não é possível inferir nada sobre a geladeira","A geladeira está praticamente sem comida, provavelmente precisa fazer compras"],
+      correta: 3,
+      explicacao: "As pistas (pote vazio, folhas murchas) indicam que a geladeira está com poucos alimentos, sugerindo que é preciso fazer compras."
+    },
+    {
+      pergunta: "Em qual frase a palavra destacada é um PRONOME, e não um substantivo?",
+      opcoes: ["NÓS vamos visitar a vovó no fim de semana.","A CASA estava muito silenciosa.","O CACHORRO latiu a noite toda.","A ESCOLA estava decorada para a festa."],
+      correta: 0,
+      explicacao: "'Nós' é um pronome pessoal, que substitui o nome das pessoas que praticam a ação. As demais palavras destacadas são substantivos."
+    },
+    {
+      pergunta: "Leia o título de um texto: 'Pesquisa revela que a população de uma espécie de tartaruga marinha aumentou 30% em dez anos.' Esse é um exemplo de qual tipo de texto?",
+      opcoes: ["Texto de ficção, pois conta uma história inventada","Texto de opinião pessoal sobre tartarugas","Poema sobre a natureza","Texto informativo, pois apresenta um dado factual baseado em pesquisa"],
+      correta: 3,
+      explicacao: "O título cita uma pesquisa e um dado numérico (30% em dez anos), características típicas de um texto informativo, que busca apresentar fatos verificáveis."
+    },
+    {
+      pergunta: "Qual destas frases mostra um substantivo sendo retomado por um SINÔNIMO, e não por um pronome?",
+      opcoes: ["Maria chegou cedo. Ela estava muito animada.","O cachorro latiu. Ele queria atenção.","A menina sorriu. Ela estava feliz.","O professor explicou a lição. O educador era muito paciente."],
+      correta: 3,
+      explicacao: "Na primeira frase, 'o educador' é um substantivo sinônimo de 'o professor', usado para retomar a ideia sem repetir a mesma palavra — diferente das outras opções, que usam pronomes (ela, ele)."
+    },
+    {
+      pergunta: "Por que, ao formar uma palavra com sufixo, é importante saber se ela parte de um substantivo ou de um adjetivo?",
+      opcoes: ["Porque isso não tem nenhuma importância na língua portuguesa","Porque todos os sufixos funcionam exatamente da mesma forma","Porque isso ajuda a identificar corretamente qual sufixo usar e qual classe gramatical a nova palavra terá","Porque só substantivos podem receber sufixos"],
+      correta: 2,
+      explicacao: "Saber a classe gramatical da palavra de origem ajuda a identificar o sufixo correto: -oso/-osa parte de substantivo e cria adjetivo; -ez/-eza parte de adjetivo e cria substantivo."
+    },
+    {
+      pergunta: "Leia: 'Ao final da apresentação, todos os colegas aplaudiram de pé, e alguns até gritaram \"bis!\".' O que se pode inferir sobre a qualidade da apresentação?",
+      opcoes: ["A apresentação foi péssima e ninguém gostou","Os colegas estavam entediados durante toda a apresentação","Não houve nenhuma apresentação","Provavelmente a apresentação foi muito boa e impressionou os colegas"],
+      correta: 3,
+      explicacao: "As pistas (aplausos de pé, pedidos de 'bis') indicam que a apresentação foi muito bem recebida e impressionou os colegas, mesmo sem o texto afirmar isso diretamente."
+    },
+    {
+      pergunta: "Em uma frase, o substantivo 'fadas' é retomado mais adiante pela expressão 'essas criaturas mágicas'. Que recurso de coesão está sendo usado?",
+      opcoes: ["Retomada por pronome pessoal","Repetição exata da mesma palavra","Retomada por sinônimo, usando outro substantivo com sentido equivalente","Não há nenhum recurso de coesão nessa frase"],
+      correta: 2,
+      explicacao: "'Essas criaturas mágicas' é uma expressão substantiva que retoma 'fadas' com sentido equivalente, sem repetir a mesma palavra — um exemplo de coesão por sinônimo."
+    },
+    {
+      pergunta: "Leia: 'O dragão soltava fogo pelas ventas enquanto guardava o tesouro na caverna escura.' Qual destas palavras do texto é um SUBSTANTIVO que nomeia um personagem de conto de encantamento?",
+      opcoes: ["Escura", "Soltava", "Dragão", "Guardava"],
+      correta: 2,
+      explicacao: "'Dragão' é o substantivo que nomeia o personagem da história. 'Escura' é adjetivo, e 'soltava'/'guardava' são verbos."
+    },
+    {
+      pergunta: "Qual destas palavras é um substantivo formado a partir de um adjetivo, usando o sufixo -eza?",
+      opcoes: ["Famoso", "Perigoso", "Carinhoso", "Beleza"],
+      correta: 3,
+      explicacao: "'Beleza' vem do adjetivo 'belo' mais o sufixo -eza, formando um substantivo. As outras opções (famoso, perigoso, carinhoso) são adjetivos formados com o sufixo -oso, e não substantivos."
     }
   ]
 };
