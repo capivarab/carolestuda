@@ -376,6 +376,46 @@ a{color:inherit;text-decoration:none;}
 .ra-secondary{background:var(--card);border:2.5px solid var(--lilac);color:var(--lilac-deep);}
 
 /* ---------- calendar page (now merged into home) ---------- */
+.tri-tabs{
+  display:flex;gap:8px;max-width:720px;margin:0 auto;padding:16px 20px 0;
+  overflow-x:auto;
+}
+.tri-tab{
+  flex-shrink:0;padding:10px 18px;border-radius:999px;border:2.5px solid var(--lilac);
+  background:var(--card);color:var(--lilac-deep);font-weight:800;font-size:14px;
+  font-family:'Baloo 2';white-space:nowrap;
+}
+.tri-tab.active{background:var(--pink-btn);border-color:var(--pink-btn);color:#fff;box-shadow:0 3px 0 var(--pink-btn-dim);}
+
+.prova-tabs{
+  display:flex;gap:8px;max-width:720px;margin:0 auto;padding:4px 20px 4px;
+  overflow-x:auto;
+}
+.prova-tab{
+  flex-shrink:0;padding:8px 16px;border-radius:999px;border:2px solid var(--lilac);
+  background:transparent;color:var(--lilac-deep);font-weight:700;font-size:13px;
+  white-space:nowrap;
+}
+.prova-tab.active{background:var(--lilac);color:var(--lilac-deep);border-color:var(--lilac);}
+
+.video-pending{
+  max-width:520px;margin:0 auto;padding:50px 24px;text-align:center;
+  background:var(--card);border:2.5px dashed var(--lilac);border-radius:var(--radius-lg);
+}
+.video-pending-ic{font-size:40px;margin-bottom:12px;}
+.video-pending-txt{font-size:15px;color:var(--sand-dim);line-height:1.6;font-weight:600;}
+
+.cal-empty{max-width:520px;margin:0 auto;padding:50px 24px;text-align:center;}
+.cal-empty-icon{font-size:44px;margin-bottom:14px;}
+.cal-empty p{font-size:15px;color:var(--sand-dim);line-height:1.6;font-weight:600;margin:0;}
+
+.cal-day-disabled{opacity:0.6;}
+.cd-soon{
+  flex-shrink:0;font-size:11px;font-weight:800;color:var(--sand-dim);
+  background:rgba(0,0,0,0.05);padding:5px 10px;border-radius:999px;white-space:nowrap;
+}
+.cd-obs{font-size:11.5px;color:var(--lilac-deep);font-weight:700;margin-top:2px;}
+
 .cal-list{max-width:720px;margin:0 auto;padding:18px 20px 8px;display:flex;flex-direction:column;gap:12px;}
 .cal-day{
   background:var(--card);border:2.5px solid var(--lilac);border-radius:var(--radius-lg);
@@ -421,77 +461,173 @@ a{color:inherit;text-decoration:none;}
    ============================================================ */
 window.SUBJECTS = {};
 
-window.CALENDARIO = [
+/* ---------- TRIMESTRES: calendário de provas organizado por trimestre ----------
+   Cada trimestre pode ter 1+ "provas" (ex: Parciais e Abrangentes no 2º Tri).
+   Cada entrada do calendário pode referenciar um subjId com módulo de estudo
+   completo em window.SUBJECTS, OU trazer nome/icone própria (nomodulo:true)
+   para disciplinas que ainda não têm conteúdo no app (ex: Inglês, Redação). */
+window.TRIMESTRES = [
   {
-    dia: "23", mes: "JUN", semana: "terça-feira", subjId: "ciencias",
+    id: "t1",
+    nome: "1º Trimestre",
+    vazio: true
   },
   {
-    dia: "24", mes: "JUN", semana: "quarta-feira", subjId: "geografia",
-  },
-  {
-    dia: "25", mes: "JUN", semana: "quinta-feira", subjId: "historia",
-  },
-  {
-    dia: "26", mes: "JUN", semana: "sexta-feira", subjId: "portugues",
-  },
-  {
-    dia: "29", mes: "JUN", semana: "segunda-feira", subjId: "matematica",
+    id: "t2",
+    nome: "2º Trimestre",
+    provas: [
+      {
+        id: "parciais",
+        nome: "Provas Parciais",
+        periodo: "23 a 29 de junho",
+        calendario: [
+          { dia: "23", mes: "JUN", semana: "terça-feira", subjId: "ciencias" },
+          { dia: "24", mes: "JUN", semana: "quarta-feira", subjId: "geografia" },
+          { dia: "25", mes: "JUN", semana: "quinta-feira", subjId: "historia" },
+          { dia: "26", mes: "JUN", semana: "sexta-feira", subjId: "portugues" },
+          { dia: "29", mes: "JUN", semana: "segunda-feira", subjId: "matematica" }
+        ],
+        temas: {
+          ciencias: {
+            temas: [
+              "A descoberta da célula (Robert Hooke e a cortiça)",
+              "Seres unicelulares e pluricelulares",
+              "Níveis de organização dos seres vivos (células, tecidos, órgãos, sistemas, organismos)",
+              "As bactérias: o que são, onde vivem e os malefícios que causam",
+              "Bactérias e seus benefícios: digestão, solo, alimentos e remédios",
+              "Fungos (leveduras, cogumelos, bolores) e a decomposição da matéria orgânica"
+            ],
+            fontes: "Caderno · Slides · Atividades impressas · Livro de Ciências, páginas 18 a 20; 24 e 25; 28 e 29; 72 e 73"
+          },
+          geografia: {
+            temas: [
+              "Agricultura e pecuária: técnicas tradicionais e modernas de cultivo e criação",
+              "O artesanato: trabalho manual, matérias-primas e cooperativas",
+              "A indústria: linha de produção, matéria-prima e fluxogramas",
+              "Meios de transporte: rodovias, ferrovias e hidrovias",
+              "Comercialização e consumo: consumismo, publicidade e desemprego",
+              "Campo e cidade: os 3 setores da economia e a integração"
+            ],
+            fontes: "Caderno · Slides · Livro de Geografia, páginas 94 a 98; 106; 110 e 111; 114 e 115; 128 a 131; 134 a 139"
+          },
+          historia: {
+            temas: [
+              "Tratado de Tordesilhas",
+              "Os bandeirantes e suas expedições",
+              "Os tropeiros",
+              "Jesuítas",
+              "Tipos de trabalho dos escravizados",
+              "Diferença entre trabalhador livre e escravizado"
+            ],
+            fontes: "Livro de História, páginas 58 a 62, 68 a 75 · Caderno · Slides · Atividades impressas"
+          },
+          portugues: {
+            temas: [
+              "Leitura e interpretação de texto informativo",
+              "Inferência de informações no texto",
+              "Morfologia: substantivo, adjetivo e pronomes",
+              "Significado das palavras pelo contexto"
+            ],
+            fontes: "Livro de Língua Portuguesa, páginas 26 e 27; 40 a 43; 194 e 195; 274 a 277 · Atividades impressas · Caderno"
+          },
+          matematica: {
+            temas: [
+              "Leitura e comparação entre números decimais",
+              "Situações-problema com as 4 operações, em contextos monetários e de medidas",
+              "Transformações entre quilograma e grama (kg/g) e litro e mililitro (L/mL)",
+              "Multiplicação: algoritmo, termos e propriedades (até 2 algarismos no multiplicador)"
+            ],
+            fontes: "Caderno · Slides · Atividades impressas · Livro de Matemática, páginas 101 e 102; 104; 185; 308 a 310; 312 a 315"
+          }
+        }
+      },
+      {
+        id: "abrangentes",
+        nome: "Provas Abrangentes",
+        periodo: "24 a 28 de agosto",
+        calendario: [
+          { dia: "24", mes: "AGO", semana: "segunda-feira", subjId: "matematica" },
+          { dia: "25", mes: "AGO", semana: "terça-feira", subjId: "geografia" },
+          { dia: "26", mes: "AGO", semana: "quarta-feira", subjId: "portugues" },
+          { dia: "26", mes: "AGO", semana: "quarta-feira", nomodulo: true, nome: "Inglês", icone: "🗣️" },
+          { dia: "27", mes: "AGO", semana: "quinta-feira", subjId: "historia" },
+          { dia: "27", mes: "AGO", semana: "quinta-feira", obs: "turmas do matutino", nomodulo: true, nome: "Redação", icone: "✏️" },
+          { dia: "28", mes: "AGO", semana: "sexta-feira", obs: "turmas do vespertino", nomodulo: true, nome: "Redação", icone: "✏️" },
+          { dia: "28", mes: "AGO", semana: "sexta-feira", subjId: "ciencias" }
+        ],
+        temas: {
+          ciencias: {
+            temas: [
+              "Cadeias alimentares: posição dos seres vivos e o papel do Sol como fonte primária de energia",
+              "Equilíbrio e desequilíbrio ambiental",
+              "Alimentação das plantas (fotossíntese) e dos animais",
+              "Classificação dos seres vivos de acordo com como obtêm seus alimentos",
+              "Fungos e bactérias: agentes decompositores",
+              "Alimentação dos seres humanos: alimentos de origem animal e vegetal, fonte de matéria e energia"
+            ],
+            fontes: "Livro, Unidade 2 — Seres vivos e ecossistemas: páginas 56 a 58; 60, 63, 64; 66 a 69; 72 e 73"
+          },
+          geografia: {
+            temas: [
+              "Paisagens naturais x paisagens antrópicas: elementos naturais e construídos",
+              "Preservação e conservação ambiental",
+              "Relevo: planaltos, planícies, montanhas e depressões",
+              "Cobertura vegetal: tipos e importância",
+              "Rios: nascente, curso e foz; importância para pessoas, animais e plantas",
+              "Clima e vegetação: regiões climáticas do Brasil e mudanças climáticas"
+            ],
+            fontes: "Capítulo 11 — O meio ambiente e a natureza no Brasil: páginas 142 a 149"
+          },
+          historia: {
+            temas: [
+              "Diferentes fluxos populacionais e suas contribuições para a formação da sociedade brasileira",
+              "Os bandeirantes e suas expedições",
+              "Os tropeiros",
+              "Jesuítas",
+              "Tipos de trabalho dos escravizados",
+              "Diferença entre trabalhador livre e escravizado"
+            ],
+            fontes: "Livro de História, páginas 9 a 14, 58 a 62, 68 a 75 · Caderno · Slides · Atividades impressas"
+          },
+          portugues: {
+            temas: [
+              "Leitura e interpretação: características do texto dramático",
+              "Inferência de informações no texto",
+              "Morfologia: verbos, substantivos, adjetivos e pronomes",
+              "Significado das palavras"
+            ],
+            fontes: "Livro, páginas 154, 155, 184 a 187, 210 a 213, 255 e 256, 288 a 290 · Caderno · Atividades impressas"
+          },
+          matematica: {
+            temas: [
+              "Figuras tridimensionais: representações, planificações e composições",
+              "Número de faces, arestas e vértices; semelhanças e diferenças",
+              "Operações com números naturais e decimais: situações-problema com as 4 operações em contextos monetários e de medidas",
+              "Situações-problema envolvendo multiplicação com até 2 algarismos no multiplicador"
+            ],
+            fontes: "Livro de Matemática, páginas 55, 57 e 58; 60 a 64; 101 e 102, 104; 185; 314 e 315 · Caderno de Atividades, páginas 11 a 14, 17"
+          },
+          ingles: {
+            temas: [
+              "Unidades 3 e 4",
+              "Personagens do circo, números, partes do corpo, esquerda e direita, tarefas de casa",
+              "Simple present, Present Continuous",
+              "Can / some, Good at + ING",
+              "Questions in Simple Present"
+            ],
+            fontes: "Livro, atividades impressas e atividades realizadas no caderno"
+          },
+          redacao: {
+            temas: [
+              "Fábula: produção escrita de uma fábula"
+            ],
+            fontes: "Atividades do portfólio ou de produção textual"
+          }
+        }
+      }
+    ]
   }
 ];
-
-window.TEMAS_PROVA = {
-  ciencias: {
-    temas: [
-      "A descoberta da célula (Robert Hooke e a cortiça)",
-      "Seres unicelulares e pluricelulares",
-      "Níveis de organização dos seres vivos (células, tecidos, órgãos, sistemas, organismos)",
-      "As bactérias: o que são, onde vivem e os malefícios que causam",
-      "Bactérias e seus benefícios: digestão, solo, alimentos e remédios",
-      "Fungos (leveduras, cogumelos, bolores) e a decomposição da matéria orgânica"
-    ],
-    fontes: "Caderno · Slides · Atividades impressas · Livro de Ciências, páginas 18 a 20; 24 e 25; 28 e 29; 72 e 73"
-  },
-  geografia: {
-    temas: [
-      "Agricultura e pecuária: técnicas tradicionais e modernas de cultivo e criação",
-      "O artesanato: trabalho manual, matérias-primas e cooperativas",
-      "A indústria: linha de produção, matéria-prima e fluxogramas",
-      "Meios de transporte: rodovias, ferrovias e hidrovias",
-      "Comercialização e consumo: consumismo, publicidade e desemprego",
-      "Campo e cidade: os 3 setores da economia e a integração"
-    ],
-    fontes: "Caderno · Slides · Livro de Geografia, páginas 94 a 98; 106; 110 e 111; 114 e 115; 128 a 131; 134 a 139"
-  },
-  historia: {
-    temas: [
-      "Tratado de Tordesilhas",
-      "Os bandeirantes e suas expedições",
-      "Os tropeiros",
-      "Jesuítas",
-      "Tipos de trabalho dos escravizados",
-      "Diferença entre trabalhador livre e escravizado"
-    ],
-    fontes: "Livro de História, páginas 58 a 62, 68 a 75 · Caderno · Slides · Atividades impressas"
-  },
-  portugues: {
-    temas: [
-      "Leitura e interpretação de texto informativo",
-      "Inferência de informações no texto",
-      "Morfologia: substantivo, adjetivo e pronomes",
-      "Significado das palavras pelo contexto"
-    ],
-    fontes: "Livro de Língua Portuguesa, páginas 26 e 27; 40 a 43; 194 e 195; 274 a 277 · Atividades impressas · Caderno"
-  },
-  matematica: {
-    temas: [
-      "Leitura e comparação entre números decimais",
-      "Situações-problema com as 4 operações, em contextos monetários e de medidas",
-      "Transformações entre quilograma e grama (kg/g) e litro e mililitro (L/mL)",
-      "Multiplicação: algoritmo, termos e propriedades (até 2 algarismos no multiplicador)"
-    ],
-    fontes: "Caderno · Slides · Atividades impressas · Livro de Matemática, páginas 101 e 102; 104; 185; 308 a 310; 312 a 315"
-  }
-};
 
 
 window.SUBJECTS.ciencias = {
@@ -3341,6 +3477,74 @@ window.SUBJECTS.matematica = {
   tempoSugeridoMin: 30,
   topicos: [
     {
+      id: "figuras-tridimensionais",
+      titulo: "Figuras Tridimensionais",
+      subtitulo: "Sólidos geométricos: nomes, faces, arestas e vértices",
+      slides: [
+        {
+          icone: "🎪",
+          titulo: "Sólidos geométricos no dia a dia",
+          corpo: "Muitos objetos ao nosso redor lembram <b>sólidos geométricos</b>! Um barril lembra um <b>cilindro</b>, um chapéu de festa lembra um <b>cone</b>, uma bola lembra uma <b>esfera</b>, um dado lembra um <b>cubo</b>, uma esponja retangular lembra um <b>paralelepípedo</b>, e uma caixa de presente sextavada lembra um <b>prisma</b>.",
+          dica: "Olhe ao seu redor: quase todo objeto tem a 'cara' de algum sólido geométrico!"
+        },
+        {
+          icone: "🧊",
+          titulo: "Poliedros x Corpos redondos",
+          corpo: "Os sólidos geométricos se dividem em dois grandes grupos: <b>poliedros</b>, que têm <b>todas as faces planas</b> (como o cubo e o paralelepípedo), e <b>corpos redondos</b>, que têm <b>pelo menos uma parte curva</b> (como a esfera, o cone e o cilindro).",
+          dica: "Poliedro vem de 'muitas faces'. Se o sólido rola facilmente, geralmente é um corpo redondo!"
+        },
+        {
+          icone: "📐",
+          titulo: "Faces, arestas e vértices",
+          corpo: "Nos poliedros dá pra identificar 3 elementos: a <b>face</b> (superfície plana), a <b>aresta</b> (linha onde 2 faces se encontram) e o <b>vértice</b> (ponto onde 3 ou mais arestas se encontram). Um bloco retangular tem <b>6 faces, 12 arestas e 8 vértices</b>.",
+          dica: "Face é a 'parede', aresta é a 'quina' (linha), e vértice é a 'ponta' (canto)."
+        },
+        {
+          icone: "🏔️",
+          titulo: "Prismas e pirâmides",
+          corpo: "O <b>prisma</b> tem duas bases iguais e paralelas (por exemplo, um prisma de base hexagonal). A <b>pirâmide</b> tem só <b>uma base</b>, e as outras faces são <b>triangulares</b>, se encontrando em um único vértice no topo. Os dois recebem o nome de acordo com o formato da base: triangular, pentagonal, hexagonal...",
+          dica: "Pirâmide sempre tem faces laterais triangulares que se juntam numa 'pontinha' no topo."
+        },
+        {
+          icone: "✂️",
+          titulo: "Planificação: desmontando um sólido",
+          corpo: "Quando 'abrimos' ou desmontamos a casca de um sólido geométrico, ele vira uma figura plana chamada <b>planificação</b>. Cada face do sólido vira uma <b>região plana</b> (quadrada, triangular, circular, hexagonal, etc.) — como quando desmontamos uma caixa de papelão.",
+          dica: "Planificar é 'abrir' o sólido igual quem abre uma caixa de papelão para guardá-la."
+        },
+      ],
+      video: { drive: "1rBuP0aR9AIkPcaV93KJuwJsbQv5zNw5a", titulo: "Figuras Tridimensionais" },
+      flashcards: [
+        { frente: "O que é um poliedro?", verso: "É um sólido geométrico que tem todas as faces planas — como o cubo e o paralelepípedo." },
+        { frente: "O que é um corpo redondo?", verso: "É um sólido geométrico que tem pelo menos uma parte curva, arredondada — como a esfera, o cone e o cilindro." },
+        { frente: "Quantas faces, arestas e vértices tem um bloco retangular (paralelepípedo)?", verso: "6 faces, 12 arestas e 8 vértices." },
+        { frente: "O que é uma aresta?", verso: "É a linha onde duas faces de um sólido se encontram." },
+        { frente: "O que é um vértice?", verso: "É o ponto onde três ou mais arestas se encontram — a 'pontinha' do sólido." },
+        { frente: "Como as pirâmides são nomeadas?", verso: "Pelo formato da base: pirâmide de base triangular, quadrada, pentagonal, hexagonal, etc." },
+        { frente: "Qual a diferença entre prisma e pirâmide?", verso: "O prisma tem duas bases iguais e paralelas ligadas por retângulos. A pirâmide tem só uma base, e as demais faces são triângulos que se encontram num único vértice." },
+        { frente: "Quantas faces planas tem um cone?", verso: "Uma só: a base circular. O resto do cone é uma parte curva." },
+        { frente: "O que é a planificação de um sólido geométrico?", verso: "É a figura plana que aparece quando 'desmontamos' ou abrimos a casca do sólido — cada face vira uma região plana." },
+        { frente: "Que região plana aparece ao planificar as faces de um cubo?", verso: "Regiões quadradas — o cubo tem 6 faces, todas quadradas e iguais." },
+      ],
+      atividades: [
+        {
+          tipo: "solidos-elementos",
+          icone: "📐",
+          titulo: "Conte faces, arestas e vértices",
+          desc: "Observe o sólido geométrico e conte corretamente quantas faces, arestas e vértices ele tem.",
+          solidos: [
+            { nome: "Cubo", emoji: "🧊", faces: 6, arestas: 12, vertices: 8 },
+            { nome: "Paralelepípedo", emoji: "📦", faces: 6, arestas: 12, vertices: 8 },
+            { nome: "Pirâmide de base quadrada", emoji: "🔺", faces: 5, arestas: 8, vertices: 5 },
+            { nome: "Pirâmide de base triangular", emoji: "🔻", faces: 4, arestas: 6, vertices: 4 },
+            { nome: "Prisma de base triangular", emoji: "🏕️", faces: 5, arestas: 9, vertices: 6 },
+            { nome: "Prisma de base pentagonal", emoji: "🏠", faces: 7, arestas: 15, vertices: 10 },
+            { nome: "Prisma de base hexagonal", emoji: "⬡", faces: 8, arestas: 18, vertices: 12 },
+            { nome: "Cone", emoji: "🍦", faces: 1, arestas: 1, vertices: 1 },
+          ]
+        },
+      ]
+    },
+    {
       id: "decimais",
       titulo: "Números decimais",
       subtitulo: "Leitura e comparação",
@@ -3368,7 +3572,7 @@ window.SUBJECTS.matematica = {
           titulo: "Decimais no dinheiro",
           corpo: "R$ 7,5 e R$ 7,50 são o <b>mesmo valor</b>. Acrescentar um zero no final de um decimal não muda o valor.<br><br>R$ 7,5 = R$ 7,50 = sete reais e cinquenta centavos.",
           dica: "Só não pode colocar zero ANTES da vírgula ou no meio — isso muda o número!"
-        }
+        },
       ],
       video: { drive: "1LlZG1Jb6Jp99td11yWu0WvIJLDRwklaG", titulo: "Números decimais — leitura e comparação" },
       flashcards: [
@@ -3376,7 +3580,7 @@ window.SUBJECTS.matematica = {
         { frente: "Como se lê 8,05?", verso: "Oito inteiros e cinco centésimos (o zero depois da vírgula 'empurra' o 5 pra casa dos centésimos)." },
         { frente: "0,7 é o mesmo que quantos centésimos?", verso: "70 centésimos (0,70)." },
         { frente: "Coloque em ordem crescente: 4,1 / 4,09 / 4,15", verso: "4,09 < 4,1 < 4,15 (compare casa por casa: 4,10 / 4,09 / 4,15)." },
-        { frente: "R$ 12,3 é igual a quantos centavos?", verso: "R$ 12,30 → 1230 centavos." }
+        { frente: "R$ 12,3 é igual a quantos centavos?", verso: "R$ 12,30 → 1230 centavos." },
       ],
       atividades: [
         {
@@ -3386,14 +3590,14 @@ window.SUBJECTS.matematica = {
           desc: "Clique no número decimal maior em cada rodada.",
           instrucao: "Toque no número que for MAIOR. Lembre-se: iguale as casas antes de decidir!",
           rodadas: [
-            { a: "2,09", b: "2,90", maior: "b" },
-            { a: "5,3", b: "5,29", maior: "a" },
-            { a: "9,01", b: "9,10", maior: "b" },
-            { a: "8,70", b: "8,7", maior: "empate" },
-            { a: "6,15", b: "6,105", maior: "a" },
-            { a: "4,31", b: "4,21", maior: "a" },
-            { a: "0,2", b: "1,25", maior: "b" },
-            { a: "12,45", b: "12,5", maior: "b" }
+            {a: "2,09",b: "2,90",maior: "b"},
+            {a: "5,3",b: "5,29",maior: "a"},
+            {a: "9,01",b: "9,10",maior: "b"},
+            {a: "8,70",b: "8,7",maior: "empate"},
+            {a: "6,15",b: "6,105",maior: "a"},
+            {a: "4,31",b: "4,21",maior: "a"},
+            {a: "0,2",b: "1,25",maior: "b"},
+            {a: "12,45",b: "12,5",maior: "b"},
           ]
         },
         {
@@ -3401,8 +3605,7 @@ window.SUBJECTS.matematica = {
           icone: "🔢",
           titulo: "Quadro de Valor de Lugar",
           desc: "Digite um número decimal e veja cada casa.",
-          instrucao: "Digite um número decimal (até 3 casas depois da vírgula) e veja em qual casa cada algarismo está.",
-          colunas: ["Centena","Dezena","Unidade","Décimo","Centésimo","Milésimo"]
+          instrucao: "Digite um número decimal (até 3 casas depois da vírgula) e veja em qual casa cada algarismo está."
         },
         {
           tipo: "ordenar",
@@ -3410,13 +3613,8 @@ window.SUBJECTS.matematica = {
           titulo: "Coloque em ordem",
           desc: "Organize os decimais do menor para o maior.",
           instrucao: "Use as setinhas para mover os números até deixá-los em ORDEM CRESCENTE (do menor para o maior).",
-          conjuntos: [
-            ["3,5", "3,45", "3,8"],
-            ["8,07", "8,7", "8,705", "8,73"],
-            ["12,45", "12,405", "12,5", "12,04"],
-            ["0,9", "0,09", "0,99"]
-          ]
-        }
+          conjuntos: [["3,5","3,45","3,8"],["8,07","8,7","8,705","8,73"],["12,45","12,405","12,5","12,04"],["0,9","0,09","0,99"]]
+        },
       ]
     },
     {
@@ -3447,7 +3645,7 @@ window.SUBJECTS.matematica = {
           titulo: "Decimais em medidas (kg, L)",
           corpo: "Problema típico: 'Um saco tem 2,5 kg de arroz. Se eu tirar 0,8 kg, quanto resta?'<br><br>→ 2,5 − 0,8 = 1,7<br>→ Restam <b>1,7 kg</b>",
           dica: "Antes de calcular, escreva o que cada número representa (kg, L, R$) — isso evita trocar a operação errada."
-        }
+        },
       ],
       video: { drive: "1MeV-TbTS0yabTPJ_vLCb2FuulkGTbfyN", titulo: "Operações com números decimais" },
       flashcards: [
@@ -3455,7 +3653,7 @@ window.SUBJECTS.matematica = {
         { frente: "6,4 × 3 = ?", verso: "19,2 (64×3=192, 1 casa decimal → 19,2)" },
         { frente: "Pedro tinha R$ 50 e gastou R$ 18,35. Quanto sobrou?", verso: "R$ 31,65 (50,00 − 18,35)" },
         { frente: "Uma caixa pesa 4,25 kg. Duas caixas pesam quanto?", verso: "8,5 kg (4,25 × 2 = 8,50)" },
-        { frente: "0,5 × 0,5 = ?", verso: "0,25 (5×5=25, e some as casas decimais das duas: 1+1=2 casas → 0,25)" }
+        { frente: "0,5 × 0,5 = ?", verso: "0,25 (5×5=25, e some as casas decimais das duas: 1+1=2 casas → 0,25)" },
       ],
       atividades: [
         {
@@ -3465,12 +3663,12 @@ window.SUBJECTS.matematica = {
           desc: "Resolva contas de soma e subtração com vírgula.",
           instrucao: "Calcule o resultado de cada conta. Lembre-se: vírgula embaixo de vírgula!",
           rodadas: [
-            { textoA: "12,5", op: "+", textoB: "3,75", resultado: "16,25" },
-            { textoA: "8,3", op: "−", textoB: "2,15", resultado: "6,15" },
-            { textoA: "5,6", op: "+", textoB: "4,4", resultado: "10" },
-            { textoA: "20", op: "−", textoB: "7,35", resultado: "12,65" },
-            { textoA: "1,25", op: "+", textoB: "1,25", resultado: "2,5" },
-            { textoA: "9,9", op: "−", textoB: "9,09", resultado: "0,81" }
+            {textoA: "12,5",op: "+",textoB: "3,75",resultado: "16,25"},
+            {textoA: "8,3",op: "−",textoB: "2,15",resultado: "6,15"},
+            {textoA: "5,6",op: "+",textoB: "4,4",resultado: "10"},
+            {textoA: "20",op: "−",textoB: "7,35",resultado: "12,65"},
+            {textoA: "1,25",op: "+",textoB: "1,25",resultado: "2,5"},
+            {textoA: "9,9",op: "−",textoB: "9,09",resultado: "0,81"},
           ]
         },
         {
@@ -3480,10 +3678,10 @@ window.SUBJECTS.matematica = {
           desc: "Resolva problemas de compra passo a passo.",
           instrucao: "Leia o problema, calcule e digite a resposta no campo. A Lumi te avisa se acertou!",
           rodadas: [
-            { texto: "Você comprou 2 cadernos de R$ 8,50 cada. Quanto gastou no total?", resposta: "17", unidade: "R$", dica: "8,50 × 2 = 17,00" },
-            { texto: "Você tinha R$ 30,00 e gastou R$ 12,75. Quanto sobrou?", resposta: "17.25", unidade: "R$", dica: "30,00 − 12,75 = 17,25" },
-            { texto: "Uma garrafa tem 2 L de suco. Você bebeu 0,75 L. Quanto restou?", resposta: "1.25", unidade: "L", dica: "2,00 − 0,75 = 1,25" },
-            { texto: "Um saco de arroz pesa 4,5 kg. Você comprou 3 sacos iguais. Qual o peso total?", resposta: "13.5", unidade: "kg", dica: "4,5 × 3 = 13,5" }
+            {texto: "Você comprou 2 cadernos de R$ 8,50 cada. Quanto gastou no total?",resposta: "17",unidade: "R$",dica: "8,50 × 2 = 17,00"},
+            {texto: "Você tinha R$ 30,00 e gastou R$ 12,75. Quanto sobrou?",resposta: "17.25",unidade: "R$",dica: "30,00 − 12,75 = 17,25"},
+            {texto: "Uma garrafa tem 2 L de suco. Você bebeu 0,75 L. Quanto restou?",resposta: "1.25",unidade: "L",dica: "2,00 − 0,75 = 1,25"},
+            {texto: "Um saco de arroz pesa 4,5 kg. Você comprou 3 sacos iguais. Qual o peso total?",resposta: "13.5",unidade: "kg",dica: "4,5 × 3 = 13,5"},
           ]
         },
         {
@@ -3491,9 +3689,8 @@ window.SUBJECTS.matematica = {
           icone: "🔢",
           titulo: "Quadro de Valor de Lugar",
           desc: "Digite um número decimal e veja cada casa.",
-          instrucao: "Digite um número decimal (até 3 casas depois da vírgula) e veja em qual casa cada algarismo está.",
-          colunas: ["Centena","Dezena","Unidade","Décimo","Centésimo","Milésimo"]
-        }
+          instrucao: "Digite um número decimal (até 3 casas depois da vírgula) e veja em qual casa cada algarismo está."
+        },
       ]
     },
     {
@@ -3524,7 +3721,7 @@ window.SUBJECTS.matematica = {
           titulo: "Problema misturando unidades",
           corpo: "Problema típico: 'Uma garrafa tem 750 mL e outra tem 1,5 L. Qual a diferença em mL?'<br><br>→ Primeiro, deixe tudo na MESMA unidade: 1,5 L = 1500 mL<br>→ 1500 − 750 = <b>750 mL</b>",
           dica: "Nunca some ou subtraia números em unidades diferentes sem converter primeiro. Esse é o erro mais comum em medidas."
-        }
+        },
       ],
       video: { drive: "16o7G5G1yv4crA3hMhHy1rGhK76eSI2tj", titulo: "Transformação de medidas: kg, g, L, mL" },
       flashcards: [
@@ -3532,7 +3729,7 @@ window.SUBJECTS.matematica = {
         { frente: "1500 g = quantos kg?", verso: "1,5 kg" },
         { frente: "0,4 L = quantos mL?", verso: "400 mL" },
         { frente: "2750 mL = quantos L?", verso: "2,75 L" },
-        { frente: "Um pacote de 1,2 kg de açúcar foi dividido em 3 partes iguais. Quantos g em cada parte?", verso: "1200 g ÷ 3 = 400 g em cada parte" }
+        { frente: "Um pacote de 1,2 kg de açúcar foi dividido em 3 partes iguais. Quantos g em cada parte?", verso: "1200 g ÷ 3 = 400 g em cada parte" },
       ],
       atividades: [
         {
@@ -3540,13 +3737,7 @@ window.SUBJECTS.matematica = {
           icone: "🔄",
           titulo: "Conversor mágico",
           desc: "Digite um valor e veja a conversão automática.",
-          instrucao: "Escolha o tipo de medida, digite o valor e veja a conversão acontecer na hora — movendo a vírgula 3 casas!",
-          opcoesConversao: [
-            { label: "kg → g", de: "kg", para: "g", fator: 1000 },
-            { label: "g → kg", de: "g", para: "kg", fator: 0.001 },
-            { label: "L → mL", de: "L", para: "mL", fator: 1000 },
-            { label: "mL → L", de: "mL", para: "L", fator: 0.001 }
-          ]
+          instrucao: "Escolha o tipo de medida, digite o valor e veja a conversão acontecer na hora — movendo a vírgula 3 casas!"
         },
         {
           tipo: "problema-loja",
@@ -3555,12 +3746,12 @@ window.SUBJECTS.matematica = {
           desc: "Resolva problemas com kg, g, L e mL.",
           instrucao: "Leia o problema, calcule e digite a resposta no campo indicado.",
           rodadas: [
-            { texto: "Um pacote de farinha tem 2 kg. Quantos gramas ele tem?", resposta: "2000", unidade: "g", dica: "2 kg × 1000 = 2000 g" },
-            { texto: "Uma garrafa tem 1500 mL de suco. Quantos litros ela tem?", resposta: "1.5", unidade: "L", dica: "1500 mL ÷ 1000 = 1,5 L" },
-            { texto: "Você tem 0,75 kg de açúcar e usa 250 g em uma receita. Quantos gramas restam?", resposta: "500", unidade: "g", dica: "0,75 kg = 750 g. 750 − 250 = 500 g" },
-            { texto: "Uma caixa d'água tem 2 L. Foram usados 850 mL. Quantos mL restam?", resposta: "1150", unidade: "mL", dica: "2 L = 2000 mL. 2000 − 850 = 1150 mL" }
+            {texto: "Um pacote de farinha tem 2 kg. Quantos gramas ele tem?",resposta: "2000",unidade: "g",dica: "2 kg × 1000 = 2000 g"},
+            {texto: "Uma garrafa tem 1500 mL de suco. Quantos litros ela tem?",resposta: "1.5",unidade: "L",dica: "1500 mL ÷ 1000 = 1,5 L"},
+            {texto: "Você tem 0,75 kg de açúcar e usa 250 g em uma receita. Quantos gramas restam?",resposta: "500",unidade: "g",dica: "0,75 kg = 750 g. 750 − 250 = 500 g"},
+            {texto: "Uma caixa d'água tem 2 L. Foram usados 850 mL. Quantos mL restam?",resposta: "1150",unidade: "mL",dica: "2 L = 2000 mL. 2000 − 850 = 1150 mL"},
           ]
-        }
+        },
       ]
     },
     {
@@ -3591,7 +3782,7 @@ window.SUBJECTS.matematica = {
           titulo: "Multiplicação em situação-problema",
           corpo: "Problema típico: 'Uma caixa tem 24 latas. Quantas latas há em 18 caixas?'<br><br>→ 24 × 18 = 432<br>→ <b>432 latas</b>",
           dica: "Identifique sempre QUEM se repete (a caixa de 24) e QUANTAS vezes (18 caixas) antes de montar a conta."
-        }
+        },
       ],
       video: { drive: "1TOeApk_kFSsXpoaxGkTPYA8iQfszozp2", titulo: "Multiplicação com dois algarismos no multiplicador" },
       flashcards: [
@@ -3599,7 +3790,7 @@ window.SUBJECTS.matematica = {
         { frente: "O que é o multiplicador?", verso: "É o segundo fator da multiplicação, o número 'de baixo' no algoritmo." },
         { frente: "60 × 15 = ?", verso: "900" },
         { frente: "Uma van leva 32 alunos. Quantos alunos em 12 vans?", verso: "384 alunos (32 × 12)" },
-        { frente: "Por que a segunda linha do algoritmo é deslocada uma casa?", verso: "Porque o segundo algarismo do multiplicador representa dezenas, não unidades — então o resultado vale 10x mais." }
+        { frente: "Por que a segunda linha do algoritmo é deslocada uma casa?", verso: "Porque o segundo algarismo do multiplicador representa dezenas, não unidades — então o resultado vale 10x mais." },
       ],
       atividades: [
         {
@@ -3609,11 +3800,11 @@ window.SUBJECTS.matematica = {
           desc: "Complete as duas linhas e a soma final.",
           instrucao: "Complete a primeira linha (× unidade), a segunda linha (× dezena, já deslocada) e a soma final.",
           rodadas: [
-            { multiplicando: 24, multiplicador: 12, linha1: 48, linha2: 240, total: 288 },
-            { multiplicando: 17, multiplicador: 13, linha1: 51, linha2: 170, total: 221 },
-            { multiplicando: 36, multiplicador: 21, linha1: 36, linha2: 720, total: 756 },
-            { multiplicando: 49, multiplicador: 12, linha1: 98, linha2: 490, total: 588 },
-            { multiplicando: 28, multiplicador: 16, linha1: 168, linha2: 280, total: 448 }
+            {multiplicando: 24,multiplicador: 12,linha1: 48,linha2: 240,total: 288},
+            {multiplicando: 17,multiplicador: 13,linha1: 51,linha2: 170,total: 221},
+            {multiplicando: 36,multiplicador: 21,linha1: 36,linha2: 720,total: 756},
+            {multiplicando: 49,multiplicador: 12,linha1: 98,linha2: 490,total: 588},
+            {multiplicando: 28,multiplicador: 16,linha1: 168,linha2: 280,total: 448},
           ]
         },
         {
@@ -3632,11 +3823,11 @@ window.SUBJECTS.matematica = {
           desc: "Resolva situações do dia a dia.",
           instrucao: "Leia o problema, calcule e digite a resposta no campo indicado.",
           rodadas: [
-            { texto: "Uma caixa tem 24 latas. Quantas latas há em 12 caixas?", resposta: "288", unidade: "latas", dica: "24 × 12 = 288" },
-            { texto: "Uma van leva 32 alunos. Quantos alunos cabem em 14 vans?", resposta: "448", unidade: "alunos", dica: "32 × 14 = 448" },
-            { texto: "Uma fábrica produz 36 caixas por hora. Quantas caixas em 18 horas?", resposta: "648", unidade: "caixas", dica: "36 × 18 = 648" }
+            {texto: "Uma caixa tem 24 latas. Quantas latas há em 12 caixas?",resposta: "288",unidade: "latas",dica: "24 × 12 = 288"},
+            {texto: "Uma van leva 32 alunos. Quantos alunos cabem em 14 vans?",resposta: "448",unidade: "alunos",dica: "32 × 14 = 448"},
+            {texto: "Uma fábrica produz 36 caixas por hora. Quantas caixas em 18 horas?",resposta: "648",unidade: "caixas",dica: "36 × 18 = 648"},
           ]
-        }
+        },
       ]
     }
   ],
@@ -3649,300 +3840,301 @@ window.SUBJECTS.matematica = {
     },
     {
       pergunta: "Compare os números 7,5; 7,45 e 7,08. Qual é a ordem correta, do MENOR para o MAIOR?",
-      opcoes: ["7,5 < 7,45 < 7,08","7,45 < 7,08 < 7,5","7,5 < 7,08 < 7,45","7,08 < 7,45 < 7,5"],
-      correta: 3,
+      opcoes: ["7,5 < 7,08 < 7,45","7,5 < 7,45 < 7,08","7,08 < 7,45 < 7,5","7,45 < 7,08 < 7,5"],
+      correta: 2,
       explicacao: "Igualando as casas: 7,50 / 7,45 / 7,08. Comparando os centésimos: 08 < 45 < 50. Logo: 7,08 < 7,45 < 7,5."
     },
     {
       pergunta: "Uma garrafa tem 2 litros de suco. Uma família consome, em média, 0,65 L por dia. Depois de 2 dias de consumo, quantos litros restaram na garrafa?",
-      opcoes: ["0,3 L","1,3 L","0,7 L","1,35 L"],
-      correta: 2,
+      opcoes: ["1,35 L","0,7 L","1,3 L","0,3 L"],
+      correta: 1,
       explicacao: "Consumo em 2 dias: 0,65 × 2 = 1,30 L. Restante na garrafa: 2,00 − 1,30 = 0,7 L."
     },
     {
       pergunta: "Um pacote de arroz tem 5 kg. Se forem retirados 1.250 g para um prato, quantos quilogramas restam no pacote?",
-      opcoes: ["3,25 kg","4,75 kg","3,5 kg","3,75 kg"],
-      correta: 3,
+      opcoes: ["3,75 kg","3,5 kg","3,25 kg","4,75 kg"],
+      correta: 0,
       explicacao: "Primeiro converta: 1.250 g = 1,25 kg. Depois subtraia: 5 kg − 1,25 kg = 3,75 kg."
     },
     {
-      pergunta: "Uma garrafa contém 750 mL de suco. Lucas bebeu 0,3 L e guardou o resto em dois copos iguais. Quantos mL ficaram em CADA copo?",
-      opcoes: ["450 mL","225 mL","300 mL","150 mL"],
-      correta: 1,
-      explicacao: "Converta 0,3 L = 300 mL. Restante: 750 − 300 = 450 mL. Dividido em 2 copos iguais: 450 ÷ 2 = 225 mL em cada copo."
-    },
-    {
       pergunta: "Em uma multiplicação, o resultado de 38 × 24 foi calculado por um aluno como 38 × 4 = 152, depois 38 × 2 = 76, e a soma direta deu 228. O aluno errou. Qual foi o erro e qual é o resultado correto?",
-      opcoes: ["Esqueceu de deslocar a segunda linha; o correto é 912","Multiplicou errado; o correto é 836","Não há erro; 228 está correto","Trocou os fatores; o correto é 562"],
+      opcoes: ["Esqueceu de deslocar a segunda linha; o correto é 912","Multiplicou errado; o correto é 836","Trocou os fatores; o correto é 562","Não há erro; 228 está correto"],
       correta: 0,
       explicacao: "O aluno esqueceu que o '2' do multiplicador 24 representa 2 dezenas (20), não 2 unidades. A segunda linha (38×2=76) deveria ser deslocada uma casa, valendo 760, não 76. Soma correta: 152 + 760 = 912."
     },
     {
       pergunta: "Uma fábrica produz caixas com 36 unidades de biscoito cada. Em um pedido de 27 caixas, quantas unidades de biscoito serão entregues no total?",
-      opcoes: ["962 unidades","896 unidades","972 unidades","918 unidades"],
-      correta: 2,
+      opcoes: ["962 unidades","972 unidades","896 unidades","918 unidades"],
+      correta: 1,
       explicacao: "36 × 27: 36×7=252; 36×2=72 deslocado uma casa = 720. Soma: 252+720 = 972 unidades."
     },
     {
       pergunta: "Mariana tem 2,4 kg de farinha. Ela vai usar essa farinha para fazer biscoitos, gastando 150 g em cada fornada. Quantas fornadas completas ela pode fazer?",
-      opcoes: ["16 fornadas","14 fornadas","12 fornadas","18 fornadas"],
-      correta: 0,
+      opcoes: ["14 fornadas","12 fornadas","16 fornadas","18 fornadas"],
+      correta: 2,
       explicacao: "Converta 2,4 kg = 2400 g. Divida: 2400 ÷ 150 = 16 fornadas completas."
     },
     {
       pergunta: "Um litro de tinta cobre 4 m² de parede. Uma lata tem 2,5 L. Quantos metros quadrados essa lata cobre, e quantos mL de tinta restam após pintar exatamente 6 m²?",
-      opcoes: ["10 m² no total; restam 1000 mL","8 m² no total; restam 1200 mL","10 m² no total; restam 750 mL","12 m² no total; restam 500 mL"],
+      opcoes: ["10 m² no total; restam 1000 mL","8 m² no total; restam 1200 mL","12 m² no total; restam 500 mL","10 m² no total; restam 750 mL"],
       correta: 0,
       explicacao: "A lata cobre: 2,5 × 4 = 10 m². Tinta usada para 6 m²: 6 ÷ 4 = 1,5 L. Tinta restante: 2,5 − 1,5 = 1,0 L = 1000 mL."
     },
     {
-      pergunta: "Pedro comprou 4 produtos: um por R$ 12,90, outro por R$ 8,35, outro por R$ 15,50 e o último por R$ 3,75. Ele pagou com duas notas de R$ 50,00. Quanto recebeu de troco?",
-      opcoes: ["R$ 59,50","R$ 40,50","R$ 59,00","R$ 60,50"],
-      correta: 0,
-      explicacao: "Soma das compras: 12,90 + 8,35 + 15,50 + 3,75 = 40,50. Pagou com R$ 100,00 (duas notas de 50). Troco: 100,00 − 40,50 = R$ 59,50."
-    },
-    {
       pergunta: "Uma caixa-d'água tem capacidade de 1.000 L. Está com 0,65 dessa capacidade preenchida. Quantos litros faltam para ela ficar completamente cheia?",
-      opcoes: ["650 L","450 L","350 L","300 L"],
-      correta: 2,
+      opcoes: ["300 L","350 L","450 L","650 L"],
+      correta: 1,
       explicacao: "0,65 de 1000 L = 650 L já preenchidos. Faltam: 1000 − 650 = 350 L."
     },
     {
       pergunta: "Em uma multiplicação de dois algarismos no multiplicador, qual destas afirmações está CORRETA sobre o algoritmo?",
-      opcoes: ["A segunda linha do produto parcial deve ser deslocada uma casa para a esquerda, pois representa dezenas","As duas linhas do produto parcial devem ficar alinhadas na mesma posição","A ordem dos fatores muda o resultado final da multiplicação","O multiplicador deve sempre ser maior que o multiplicando"],
-      correta: 0,
+      opcoes: ["O multiplicador deve sempre ser maior que o multiplicando","As duas linhas do produto parcial devem ficar alinhadas na mesma posição","A segunda linha do produto parcial deve ser deslocada uma casa para a esquerda, pois representa dezenas","A ordem dos fatores muda o resultado final da multiplicação"],
+      correta: 2,
       explicacao: "Quando o multiplicador tem dois algarismos, o segundo algarismo representa a casa das dezenas. Por isso, o produto parcial gerado por ele deve ser deslocado uma casa para a esquerda (ou um zero adicionado), pois seu valor real é 10 vezes maior."
     },
     {
       pergunta: "Um agricultor colheu 3,25 toneladas de milho. Ele vendeu 1.800 kg para um mercado. Quantas toneladas de milho ainda restam com ele?",
-      opcoes: ["1,25 toneladas","1,55 toneladas","1,35 toneladas","1,45 toneladas"],
-      correta: 3,
+      opcoes: ["1,45 toneladas","1,35 toneladas","1,25 toneladas","1,55 toneladas"],
+      correta: 0,
       explicacao: "Converta 1.800 kg = 1,8 toneladas. Subtraia: 3,25 − 1,8 = 1,45 toneladas."
     },
     {
       pergunta: "Uma receita de bolo usa 0,25 L de leite. Carla quer fazer 6 bolos. Quantos mililitros de leite ela precisa comprar no total?",
-      opcoes: ["1.500 mL","1.250 mL","1.800 mL","1.350 mL"],
-      correta: 0,
+      opcoes: ["1.800 mL","1.500 mL","1.350 mL","1.250 mL"],
+      correta: 1,
       explicacao: "0,25 L × 6 = 1,5 L. Convertendo para mL: 1,5 L = 1.500 mL."
     },
     {
       pergunta: "Uma loja vende um produto por R$ 24,99. Em uma promoção, o preço de 15 unidades desse produto, sem desconto, seria de quanto?",
-      opcoes: ["R$ 364,85","R$ 374,85","R$ 384,75","R$ 349,86"],
+      opcoes: ["R$ 349,86","R$ 374,85","R$ 364,85","R$ 384,75"],
       correta: 1,
       explicacao: "24,99 × 15: 24,99×5=124,95; 24,99×10=249,90. Soma: 124,95+249,90 = 374,85."
     },
     {
       pergunta: "Bruna precisa transportar 2,8 kg de farinha em sacos pequenos de 350 g cada. Quantos sacos completos ela conseguirá preencher?",
-      opcoes: ["7 sacos","9 sacos","8 sacos","6 sacos"],
-      correta: 2,
+      opcoes: ["9 sacos","7 sacos","6 sacos","8 sacos"],
+      correta: 3,
       explicacao: "Converta: 2,8 kg = 2800 g. Divida: 2800 ÷ 350 = 8 sacos completos."
     },
     {
       pergunta: "Em uma multiplicação de 47 × 32, qual é o resultado correto?",
-      opcoes: ["1.404","1.504","1.514","1.604"],
+      opcoes: ["1.514","1.504","1.604","1.404"],
       correta: 1,
       explicacao: "47 × 32: 47×2=94; 47×3=141 deslocado uma casa = 1410. Soma: 94+1410 = 1504."
     },
     {
       pergunta: "Um aquário cabe 18 L de água. Está preenchido com 12.500 mL. Quantos litros de água ainda são necessários para enchê-lo completamente?",
-      opcoes: ["6,5 L","5 L","5,5 L","4,5 L"],
-      correta: 2,
+      opcoes: ["6,5 L","5,5 L","4,5 L","5 L"],
+      correta: 1,
       explicacao: "Converta: 12.500 mL = 12,5 L. Faltam: 18 − 12,5 = 5,5 L."
     },
     {
       pergunta: "Uma fábrica de doces embala 24 balas por pacote. Em um pedido, foram produzidos 18 lotes de 24 pacotes cada. Quantas balas, no total, foram produzidas nesse pedido?",
-      opcoes: ["9.936 balas","10.368 balas","10.224 balas","9.864 balas"],
-      correta: 1,
+      opcoes: ["10.368 balas","10.224 balas","9.864 balas","9.936 balas"],
+      correta: 0,
       explicacao: "Primeiro, pacotes totais: 18 × 24 = 432 pacotes. Depois, balas totais: 432 × 24 = 10.368 balas (432×4=1728; 432×20=8640; soma=10368)."
     },
     {
-      pergunta: "Camila tinha R$ 35,40 e ganhou mais R$ 18,75 de mesada. Com esse total, comprou um livro de R$ 27,90. Quanto sobrou?",
-      opcoes: ["R$ 26,25","R$ 25,25","R$ 27,15","R$ 24,35"],
-      correta: 0,
-      explicacao: "Total disponível: 35,40 + 18,75 = 54,15. Após comprar o livro: 54,15 − 27,90 = R$ 26,25."
-    },
-    {
       pergunta: "Compare os números 6,15 e 6,105. Qual relação está CORRETA?",
-      opcoes: ["6,15 < 6,105","6,15 = 6,105","Não é possível comparar esses números","6,15 > 6,105"],
-      correta: 3,
+      opcoes: ["6,15 < 6,105","Não é possível comparar esses números","6,15 > 6,105","6,15 = 6,105"],
+      correta: 2,
       explicacao: "Igualando as casas: 6,150 e 6,105. Comparando os centésimos: 5 > 0. Logo, 6,15 é maior que 6,105."
     },
     {
       pergunta: "Qual destas alternativas mostra os números 8,07; 8,7; 8,705 e 8,73 em ordem CRESCENTE?",
-      opcoes: ["8,07 < 8,7 < 8,705 < 8,73","8,73 < 8,705 < 8,7 < 8,07","8,7 < 8,07 < 8,73 < 8,705","8,07 < 8,705 < 8,7 < 8,73"],
-      correta: 0,
+      opcoes: ["8,7 < 8,07 < 8,73 < 8,705","8,07 < 8,7 < 8,705 < 8,73","8,07 < 8,705 < 8,7 < 8,73","8,73 < 8,705 < 8,7 < 8,07"],
+      correta: 1,
       explicacao: "Igualando as casas (3 decimais): 8,070 / 8,700 / 8,705 / 8,730. Comparando: 070 < 700 < 705 < 730. Logo: 8,07 < 8,7 < 8,705 < 8,73."
     },
     {
       pergunta: "Qual é o número decimal que representa a metade de 1?",
-      opcoes: ["0,05","0,25","0,75","0,5"],
+      opcoes: ["0,75","0,05","0,25","0,5"],
       correta: 3,
       explicacao: "A metade de 1 é 1 dividido por 2, que é igual a 0,5."
     },
     {
       pergunta: "Compare 9,01 e 9,10. Qual relação está CORRETA?",
-      opcoes: ["9,01 > 9,10","9,01 = 9,10","9,01 < 9,10","9,01 e 9,10 não podem ser comparados"],
-      correta: 2,
+      opcoes: ["9,01 > 9,10","9,01 < 9,10","9,01 = 9,10","9,01 e 9,10 não podem ser comparados"],
+      correta: 1,
       explicacao: "Igualando as casas: 9,01 já tem 2 casas, assim como 9,10. Comparando os décimos: 0 < 1. Logo, 9,01 é menor que 9,10. Atenção: embora pareçam ter 'os mesmos algarismos', os valores são diferentes!"
     },
     {
       pergunta: "Compare 2,09 e 2,90. Qual relação está CORRETA?",
-      opcoes: ["2,09 > 2,90","2,09 < 2,90","2,09 = 2,90","Não é possível saber sem mais informações"],
-      correta: 1,
+      opcoes: ["2,09 < 2,90","2,09 = 2,90","Não é possível saber sem mais informações","2,09 > 2,90"],
+      correta: 0,
       explicacao: "Comparando os décimos: 2,09 tem 0 décimos, e 2,90 tem 9 décimos. Como 0 < 9, então 2,09 é MENOR que 2,90 — eles NÃO são iguais, mesmo parecendo ter os mesmos algarismos trocados de posição."
     },
     {
       pergunta: "Escreva por extenso o número decimal 2,08.",
-      opcoes: ["Dois inteiros e oito décimos","Vinte e oito centésimos","Dois inteiros e oito centésimos","Dois inteiros e oitenta centésimos"],
+      opcoes: ["Vinte e oito centésimos","Dois inteiros e oitenta centésimos","Dois inteiros e oito centésimos","Dois inteiros e oito décimos"],
       correta: 2,
       explicacao: "Em 2,08, o '0' está na casa dos décimos e o '8' está na casa dos centésimos. Por isso, lê-se 'dois inteiros e oito centésimos' (e não oito décimos)."
     },
     {
       pergunta: "Qual número decimal corresponde a 'setenta e três inteiros e cinco centésimos'?",
-      opcoes: ["73,5","73,05","73,50","7,35"],
-      correta: 1,
+      opcoes: ["73,50","73,5","7,35","73,05"],
+      correta: 3,
       explicacao: "Cinco centésimos é representado como '05' após a vírgula (na segunda casa decimal), então o número correto é 73,05. Escrever 73,5 representaria 'cinco décimos', que é diferente."
     },
     {
       pergunta: "Organize em ordem DECRESCENTE: 12,45; 12,405; 11,98; 12,5; 12,04; 11,999.",
-      opcoes: ["12,5 > 12,45 > 12,405 > 11,999 > 11,98 > 12,04","11,98 < 11,999 < 12,04 < 12,405 < 12,45 < 12,5","12,5 > 12,45 > 12,405 > 12,04 > 11,999 > 11,98","12,04 > 12,5 > 12,45 > 12,405 > 11,98 > 11,999"],
-      correta: 2,
+      opcoes: ["12,5 > 12,45 > 12,405 > 12,04 > 11,999 > 11,98","11,98 < 11,999 < 12,04 < 12,405 < 12,45 < 12,5","12,04 > 12,5 > 12,45 > 12,405 > 11,98 > 11,999","12,5 > 12,45 > 12,405 > 11,999 > 11,98 > 12,04"],
+      correta: 0,
       explicacao: "Comparando parte inteira primeiro: os números com '12' são maiores que os com '11'. Entre os de parte inteira 12: 12,5 > 12,45 > 12,405 > 12,04. Entre os de parte inteira 11: 11,999 > 11,98. Ordem decrescente completa: 12,5 > 12,45 > 12,405 > 12,04 > 11,999 > 11,98."
     },
     {
       pergunta: "Organize os números decimais 23,156; 4,003; 0,25; 1,06 e 198,09 no QVL (Quadro de Valor de Lugar). Qual desses números tem um algarismo na casa dos MILÉSIMOS?",
-      opcoes: ["4,003","0,25","23,156","1,06"],
-      correta: 2,
+      opcoes: ["0,25","23,156","4,003","1,06"],
+      correta: 1,
       explicacao: "23,156 tem três casas decimais: 1 (décimo), 5 (centésimo) e 6 (milésimo). Os outros números têm no máximo duas casas decimais, então não chegam à casa dos milésimos da mesma forma (4,003 tem milésimo também, mas a pergunta busca o exemplo mais direto com três casas preenchidas: 23,156)."
     },
     {
       pergunta: "Em qual destas opções o número decimal foi escrito CORRETAMENTE, respeitando o valor posicional?",
-      opcoes: ["Doze décimos = 1,2","Doze décimos = 0,12","Doze décimos = 12,0","Doze décimos = 0,012"],
-      correta: 0,
+      opcoes: ["Doze décimos = 0,12","Doze décimos = 1,2","Doze décimos = 0,012","Doze décimos = 12,0"],
+      correta: 1,
       explicacao: "Doze décimos significa 12/10, que é igual a 1,2 (um inteiro e dois décimos), pois passa de 10 décimos, completando uma unidade inteira."
     },
     {
       pergunta: "Ana mediu a massa de duas mochilas: uma com 3,15 kg e outra com 3,28 kg. Qual mochila é mais pesada?",
-      opcoes: ["A de 3,15 kg","As duas têm o mesmo peso","A de 3,28 kg","Não é possível saber sem balança"],
-      correta: 2,
+      opcoes: ["A de 3,28 kg","A de 3,15 kg","As duas têm o mesmo peso","Não é possível saber sem balança"],
+      correta: 0,
       explicacao: "Comparando os centésimos (parte inteira igual, décimos iguais): 28 centésimos é maior que 15 centésimos. Logo, a mochila de 3,28 kg é mais pesada."
     },
     {
       pergunta: "Pedro tinha R$ 15,00 e comprou um brinquedo de R$ 7,50. Quanto dinheiro sobrou?",
-      opcoes: ["R$ 8,50","R$ 7,50","R$ 6,50","R$ 22,50"],
-      correta: 1,
+      opcoes: ["R$ 8,50","R$ 22,50","R$ 6,50","R$ 7,50"],
+      correta: 3,
       explicacao: "Subtraindo: 15,00 − 7,50 = 7,50. Sobraram R$ 7,50."
     },
     {
-      pergunta: "Uma garrafa tinha 2,5 L de suco. Foram consumidos 1 L. Quantos litros restaram?",
-      opcoes: ["1 L","1,5 L","2 L","3,5 L"],
-      correta: 1,
-      explicacao: "Subtraindo: 2,5 − 1 = 1,5. Restaram 1,5 L de suco."
-    },
-    {
-      pergunta: "Um pacote tinha 5 kg de arroz. Foram utilizados 1,5 kg. Quantos quilogramas restaram no pacote?",
-      opcoes: ["3 kg","3,5 kg","4,5 kg","6,5 kg"],
-      correta: 1,
-      explicacao: "Subtraindo: 5 − 1,5 = 3,5. Restaram 3,5 kg de arroz no pacote."
-    },
-    {
-      pergunta: "Uma caixa continha 3,5 L de água. Depois de usar 1,25 L, quantos litros restaram na caixa?",
-      opcoes: ["2,5 L","2,25 L","2,75 L","1,25 L"],
-      correta: 1,
-      explicacao: "Subtraindo, alinhando as vírgulas: 3,50 − 1,25 = 2,25. Restaram 2,25 L na caixa."
-    },
-    {
       pergunta: "Calcule 24 × 12 usando o algoritmo da multiplicação. Qual é o resultado?",
-      opcoes: ["248","268","288","298"],
-      correta: 2,
+      opcoes: ["298","248","268","288"],
+      correta: 3,
       explicacao: "24 × 2 = 48 (primeira linha). 24 × 1 (que vale 10) = 24, deslocado uma casa = 240 (segunda linha). Soma: 48 + 240 = 288."
     },
     {
       pergunta: "Calcule 17 × 13 usando o algoritmo da multiplicação. Qual é o resultado?",
-      opcoes: ["211","231","201","221"],
+      opcoes: ["211","201","231","221"],
       correta: 3,
       explicacao: "17 × 3 = 51 (primeira linha). 17 × 1 (que vale 10) = 17, deslocado uma casa = 170 (segunda linha). Soma: 51 + 170 = 221."
     },
     {
-      pergunta: "Calcule 36 × 21 usando o algoritmo da multiplicação. Qual é o resultado?",
-      opcoes: ["746","766","736","756"],
-      correta: 3,
-      explicacao: "36 × 1 = 36 (primeira linha). 36 × 2 (que vale 20) = 72, deslocado uma casa = 720 (segunda linha). Soma: 36 + 720 = 756."
-    },
-    {
-      pergunta: "Calcule 49 × 12 usando o algoritmo da multiplicação. Qual é o resultado?",
-      opcoes: ["578","598","568","588"],
-      correta: 3,
-      explicacao: "49 × 2 = 98 (primeira linha). 49 × 1 (que vale 10) = 49, deslocado uma casa = 490 (segunda linha). Soma: 98 + 490 = 588."
-    },
-    {
       pergunta: "Para uma apresentação, a escola organizou 4 grupos com 6 alunos em cada grupo. Depois, mais 2 grupos iguais foram formados. Quantos alunos participaram ao todo?",
-      opcoes: ["36 alunos","24 alunos","48 alunos","30 alunos"],
-      correta: 0,
+      opcoes: ["24 alunos","36 alunos","30 alunos","48 alunos"],
+      correta: 1,
       explicacao: "Primeiro, 4 grupos de 6: 4 × 6 = 24 alunos. Depois, mais 2 grupos de 6: 2 × 6 = 12 alunos. Total: 24 + 12 = 36 alunos."
     },
     {
-      pergunta: "Uma biblioteca comprou 72 livros para organizar em estantes. Ao todo, há 12 estantes, e cada uma comporta 8 livros. Depois de organizar todos os livros, quantas estantes não foram usadas?",
-      opcoes: ["4 estantes","8 estantes","9 estantes","3 estantes"],
-      correta: 3,
-      explicacao: "Cada estante comporta 8 livros. Para guardar 72 livros: 72 ÷ 8 = 9 estantes usadas. Como há 12 estantes ao todo, restam 12 − 9 = 3 estantes vazias."
-    },
-    {
       pergunta: "Para a festa de aniversário de Caio, foram organizadas 24 mesas. Em cada mesa há 6 cadeiras. Quantas cadeiras foram organizadas ao todo?",
-      opcoes: ["134 cadeiras","144 cadeiras","154 cadeiras","124 cadeiras"],
-      correta: 1,
+      opcoes: ["144 cadeiras","124 cadeiras","154 cadeiras","134 cadeiras"],
+      correta: 0,
       explicacao: "24 × 6: 24×6 = 144 (multiplicação simples, já que 6 é multiplicador de 1 algarismo). Foram organizadas 144 cadeiras."
     },
     {
       pergunta: "Veja que um litro de água deu para enche quatro copos iguais. Qual é a medida da capacidade de cada copo?",
-      opcoes: ["200 mL","300 mL","350 mL","250 mL"],
-      correta: 3,
+      opcoes: ["250 mL","200 mL","300 mL","350 mL"],
+      correta: 0,
       explicacao: "1 litro = 1000 mL. Dividindo igualmente entre 4 copos: 1000 ÷ 4 = 250 mL em cada copo."
     },
     {
       pergunta: "Fabiano sabe que um cubinho de seu jogo de montar tem massa igual a 200 g. Se a balança está em equilíbrio com 3 cubinhos de um lado e 2 peças desconhecidas de massa igual do outro lado, qual é a massa de cada peça desconhecida?",
-      opcoes: ["200 g","400 g","600 g","300 g"],
-      correta: 3,
+      opcoes: ["200 g","600 g","300 g","400 g"],
+      correta: 2,
       explicacao: "3 cubinhos de 200 g cada somam 600 g. Esse total se divide igualmente entre as 2 peças desconhecidas: 600 ÷ 2 = 300 g cada."
     },
     {
-      pergunta: "Seu João vende água na beira da praia. Em uma hora de trabalho, ele vendeu 20 garrafinhas de 500 mL cada. Quantos litros de água ele vendeu?",
-      opcoes: ["20 litros","10 litros","5 litros","15 litros"],
-      correta: 1,
-      explicacao: "20 garrafinhas × 500 mL = 10.000 mL. Convertendo para litros: 10.000 mL ÷ 1000 = 10 litros."
-    },
-    {
       pergunta: "Uma torneira pingando armazenou 250 mL de água por hora. Após nove horas de desperdício, qual foi a quantidade de água armazenada?",
-      opcoes: ["2 L","2,5 L","2,25 L","1,25 L"],
-      correta: 2,
+      opcoes: ["2 L","1,25 L","2,5 L","2,25 L"],
+      correta: 3,
       explicacao: "250 mL × 9 = 2.250 mL. Convertendo para litros: 2.250 mL = 2,25 L."
     },
     {
       pergunta: "O elefante asiático tem aproximadamente 5 toneladas, e o africano, 7 toneladas. Considerando que uma tonelada é igual a 1.000 kg, qual é a diferença entre a massa desses dois animais, em quilogramas?",
-      opcoes: ["1.000 kg","2.000 kg","3.000 kg","12.000 kg"],
-      correta: 1,
+      opcoes: ["1.000 kg","12.000 kg","2.000 kg","3.000 kg"],
+      correta: 2,
       explicacao: "Diferença em toneladas: 7 − 5 = 2 toneladas. Convertendo para kg: 2 toneladas × 1.000 = 2.000 kg."
     },
     {
       pergunta: "Joana precisa de 4 m de tecido para fazer uma colcha. Ela tem uma peça de 2,6 m e outra de 1,45 m. O que Joana tem de tecido é suficiente para o que ela precisa?",
-      opcoes: ["Não, ela tem apenas 3,5 m","Sim, ela tem exatamente 4 m","Não, ela tem apenas 2,6 m","Sim, ela tem 4,05 m, que é suficiente"],
+      opcoes: ["Não, ela tem apenas 2,6 m","Não, ela tem apenas 3,5 m","Sim, ela tem exatamente 4 m","Sim, ela tem 4,05 m, que é suficiente"],
       correta: 3,
       explicacao: "Somando as duas peças: 2,6 + 1,45 = 4,05 m. Como 4,05 m é maior que os 4 m necessários, o tecido é suficiente (com 0,05 m sobrando)."
     },
     {
       pergunta: "Márcio comprou 1 lata de azeite por R$ 13,70 e 1 pacote de soja por R$ 3,59, pagando com uma nota de R$ 17,50. Quanto Márcio recebeu de troco?",
-      opcoes: ["R$ 0,21","R$ 0,29","R$ 0,19","R$ 0,31"],
+      opcoes: ["R$ 0,21","R$ 0,31","R$ 0,19","R$ 0,29"],
       correta: 0,
       explicacao: "Total gasto: 13,70 + 3,59 = 17,29. Troco: 17,50 − 17,29 = R$ 0,21."
     },
     {
       pergunta: "Comparando o preço de 2 pacotes de soja (R$ 3,59 cada) com o preço de 3 garrafas de suco (R$ 2,95 cada), qual custa mais?",
-      opcoes: ["3 garrafas de suco custam mais","2 pacotes de soja custam mais","Os dois custam exatamente o mesmo valor","Não é possível comparar sem saber a marca"],
-      correta: 0,
+      opcoes: ["Não é possível comparar sem saber a marca","Os dois custam exatamente o mesmo valor","3 garrafas de suco custam mais","2 pacotes de soja custam mais"],
+      correta: 2,
       explicacao: "2 pacotes de soja: 3,59 × 2 = 7,18. 3 garrafas de suco: 2,95 × 3 = 8,85. Como 8,85 é maior que 7,18, as 3 garrafas de suco custam mais."
+    },
+    {
+      pergunta: "Um dado, uma esponja retangular e uma bola de tênis são exemplos de objetos com formato parecido com sólidos geométricos. Qual associação está CORRETA?",
+      opcoes: ["Dado = cone, esponja = esfera, bola = cubo","Dado = esfera, esponja = cubo, bola = cone","Dado = paralelepípedo, esponja = cone, bola = cubo","Dado = cubo, esponja = paralelepípedo, bola = esfera"],
+      correta: 3,
+      explicacao: "O dado tem a forma de um cubo (todas as faces quadradas e iguais), a esponja retangular lembra um paralelepípedo (bloco retangular), e a bola de tênis é uma esfera."
+    },
+    {
+      pergunta: "Qual é a principal diferença entre um poliedro e um corpo redondo?",
+      opcoes: ["Não existe diferença entre eles","O poliedro sempre rola; o corpo redondo nunca rola","O poliedro tem todas as faces planas; o corpo redondo tem pelo menos uma parte curva","O poliedro não tem vértices; o corpo redondo tem vértices"],
+      correta: 2,
+      explicacao: "Poliedros (como o cubo e o paralelepípedo) têm todas as faces planas. Corpos redondos (como a esfera, o cone e o cilindro) têm pelo menos uma parte curva, arredondada."
+    },
+    {
+      pergunta: "Observe: a esfera é um corpo redondo. Quais outros sólidos geométricos também são corpos redondos?",
+      opcoes: ["Cone e cilindro","Cubo e cone","Prisma e paralelepípedo","Cubo e pirâmide"],
+      correta: 0,
+      explicacao: "Cone e cilindro têm partes curvas (arredondadas), assim como a esfera — por isso os três são classificados como corpos redondos."
+    },
+    {
+      pergunta: "Um bloco retangular (paralelepípedo) tem quantas faces, arestas e vértices?",
+      opcoes: ["6 faces, 8 arestas e 12 vértices","4 faces, 6 arestas e 4 vértices","6 faces, 12 arestas e 8 vértices","8 faces, 12 arestas e 6 vértices"],
+      correta: 2,
+      explicacao: "O paralelepípedo (bloco retangular) tem 6 faces (todas retangulares), 12 arestas e 8 vértices."
+    },
+    {
+      pergunta: "O que é uma ARESTA em um sólido geométrico?",
+      opcoes: ["O encontro de três ou mais arestas, formando uma 'ponta'","A parte curva de um corpo redondo","O encontro (a linha) onde duas faces se juntam","Qualquer face plana do sólido"],
+      correta: 2,
+      explicacao: "A aresta é a linha onde duas faces se encontram. Já o vértice é onde três ou mais arestas se encontram, formando uma 'ponta'."
+    },
+    {
+      pergunta: "O que é um VÉRTICE em um sólido geométrico?",
+      opcoes: ["O ponto onde três ou mais arestas se encontram","A linha onde duas faces se encontram","Qualquer uma das faces planas","A base de uma pirâmide"],
+      correta: 1,
+      explicacao: "O vértice é o ponto (a 'ponta') onde três ou mais arestas se encontram. A linha onde duas faces se encontram é chamada de aresta."
+    },
+    {
+      pergunta: "Uma pirâmide tem base pentagonal (5 lados). Além da base, como são as demais faces dessa pirâmide?",
+      opcoes: ["Faces laterais também pentagonais","A pirâmide não tem outras faces além da base","Faces laterais triangulares, que se encontram em um único vértice no topo","Faces laterais retangulares, iguais à base"],
+      correta: 2,
+      explicacao: "Em toda pirâmide, além da base (que dá nome à pirâmide, nesse caso pentagonal), as demais faces são triangulares e se encontram em um único ponto no topo, chamado vértice da pirâmide."
+    },
+    {
+      pergunta: "Um prisma tem duas bases hexagonais (6 lados) iguais e paralelas. Como se chama esse sólido?",
+      opcoes: ["Pirâmide de base hexagonal","Hexaedro redondo","Prisma hexagonal redondo","Prisma de base hexagonal"],
+      correta: 3,
+      explicacao: "Os prismas recebem o nome de acordo com o formato da base. Como a base tem 6 lados (hexágono), esse sólido é um prisma de base hexagonal — como uma caixa de presente sextavada."
+    },
+    {
+      pergunta: "Quando desmontamos (planificamos) um cubo, quantas regiões planas quadradas aparecem?",
+      opcoes: ["12 regiões quadradas","4 regiões quadradas","8 regiões quadradas","6 regiões quadradas"],
+      correta: 3,
+      explicacao: "O cubo tem 6 faces, todas quadradas e do mesmo tamanho. Por isso, ao planificar um cubo, aparecem 6 regiões planas quadradas."
+    },
+    {
+      pergunta: "Ao planificar um cone, quais regiões planas aparecem?",
+      opcoes: ["Uma região triangular e uma quadrada","Duas regiões circulares iguais","Seis regiões triangulares","Uma região circular (a base) e uma região curva (a lateral)"],
+      correta: 3,
+      explicacao: "O cone tem uma única face plana, que é circular (a base), e uma parte curva que forma a lateral do cone — por isso não é um poliedro."
     }
   ]
 };
+
 /* ============================================================
    CAROL ESTUDA — APP LOGIC
    ============================================================ */
@@ -3952,6 +4144,7 @@ const SUBJECT_ORDER = ["ciencias","geografia","historia","portugues","matematica
 const state = {
   route: { view: "home" },
   progress: loadProgress(),
+  calTab: { tri: "t2", prova: "abrangentes" },
 };
 
 function loadProgress(){
@@ -4003,40 +4196,122 @@ const ARROW_RIGHT = "→";
 /* ============================================================
    HOME
    ============================================================ */
-function renderHome(){
-  const dayRows = window.CALENDARIO.map(d=>{
-    const s = window.SUBJECTS[d.subjId];
-    return `
-      <button class="cal-day" data-action="open-subject" data-subj="${d.subjId}">
-        <div class="cd-date">
-          <div class="cd-num">${d.dia}</div>
-          <div class="cd-mon">${d.mes}</div>
-        </div>
-        <div class="cd-info">
-          <div class="cd-subj">${s.icone} ${s.nome}</div>
-          <div class="cd-week">${d.semana}</div>
-        </div>
-        <div class="cd-go">${ARROW_RIGHT}</div>
-      </button>
-    `;
-  }).join("");
+function currentTri(){
+  return window.TRIMESTRES.find(t=>t.id===state.calTab.tri) || window.TRIMESTRES[0];
+}
+function currentProva(){
+  const tri = currentTri();
+  if(!tri.provas || !tri.provas.length) return null;
+  return tri.provas.find(p=>p.id===state.calTab.prova) || tri.provas[0];
+}
 
-  const themeCards = SUBJECT_ORDER.map(id=>{
-    const s = window.SUBJECTS[id];
-    const d = window.CALENDARIO.find(x=>x.subjId===id);
-    const temas = window.TEMAS_PROVA[id];
-    const li = temas.temas.map(t=>`<li>${t}</li>`).join("");
-    return `
-      <div class="ct-card">
-        <div class="ct-head">
-          <span class="ct-name">${s.icone} ${s.nome}</span>
-          <span class="ct-date">${d.dia}/06</span>
-        </div>
-        <ul>${li}</ul>
-        <div class="ct-fontes"><b>Fontes:</b> ${temas.fontes}</div>
+function renderHome(){
+  const triTabs = window.TRIMESTRES.map(t=>`
+    <button class="tri-tab ${t.id===state.calTab.tri?'active':''}" data-action="cal-tri" data-tri="${t.id}">${t.nome}</button>
+  `).join("");
+
+  const tri = currentTri();
+  let bodyHtml = "";
+
+  if(tri.vazio || !tri.provas || !tri.provas.length){
+    bodyHtml = `
+      <div class="cal-empty">
+        <div class="cal-empty-icon">🗓️</div>
+        <p>Ainda não temos o cronograma de provas deste trimestre por aqui.<br>Assim que a escola divulgar, a Carol confere tudo aqui! 💕</p>
       </div>
     `;
-  }).join("");
+  } else {
+    const prova = currentProva();
+    const provaTabs = tri.provas.length > 1 ? `
+      <div class="prova-tabs">
+        ${tri.provas.map(p=>`
+          <button class="prova-tab ${p.id===prova.id?'active':''}" data-action="cal-prova" data-prova="${p.id}">${p.nome}</button>
+        `).join("")}
+      </div>
+    ` : "";
+
+    const dayRows = prova.calendario.map(d=>{
+      const hasModulo = !d.nomodulo && window.SUBJECTS[d.subjId];
+      const icone = hasModulo ? window.SUBJECTS[d.subjId].icone : d.icone;
+      const nome = hasModulo ? window.SUBJECTS[d.subjId].nome : d.nome;
+      const obsHtml = d.obs ? `<div class="cd-obs">${d.obs}</div>` : "";
+      if(hasModulo){
+        return `
+          <button class="cal-day" data-action="open-subject" data-subj="${d.subjId}">
+            <div class="cd-date">
+              <div class="cd-num">${d.dia}</div>
+              <div class="cd-mon">${d.mes}</div>
+            </div>
+            <div class="cd-info">
+              <div class="cd-subj">${icone} ${nome}</div>
+              <div class="cd-week">${d.semana}</div>
+              ${obsHtml}
+            </div>
+            <div class="cd-go">${ARROW_RIGHT}</div>
+          </button>
+        `;
+      }
+      return `
+        <div class="cal-day cal-day-disabled">
+          <div class="cd-date">
+            <div class="cd-num">${d.dia}</div>
+            <div class="cd-mon">${d.mes}</div>
+          </div>
+          <div class="cd-info">
+            <div class="cd-subj">${icone} ${nome}</div>
+            <div class="cd-week">${d.semana}</div>
+            ${obsHtml}
+          </div>
+          <div class="cd-soon">em breve</div>
+        </div>
+      `;
+    }).join("");
+
+    /* Monta a ordem cronológica a partir do calendário (não da ordem do objeto temas) */
+    const nomeParaId = { "Inglês": "ingles", "Redação": "redacao" };
+    const mesNum = { JAN:"01",FEV:"02",MAR:"03",ABR:"04",MAI:"05",JUN:"06",JUL:"07",AGO:"08",SET:"09",OUT:"10",NOV:"11",DEZ:"12" };
+    const ordemIds = [];
+    prova.calendario.forEach(x=>{
+      const key = x.subjId || nomeParaId[x.nome] || x.nome;
+      if(key && !ordemIds.includes(key)) ordemIds.push(key);
+    });
+
+    const themeCards = ordemIds.filter(id=>prova.temas[id]).map(id=>{
+      const hasModulo = window.SUBJECTS[id];
+      const dEntries = prova.calendario.filter(x=>(x.subjId||nomeParaId[x.nome]||x.nome)===id);
+      const d0 = dEntries[0];
+      const icone = hasModulo ? hasModulo.icone : (d0 ? d0.icone : "📌");
+      const nome = hasModulo ? hasModulo.nome : (d0 ? d0.nome : id);
+      const datas = dEntries.map(x=>`${x.dia}/${mesNum[x.mes]||x.mes}`).join(", ");
+      const temas = prova.temas[id];
+      const li = temas.temas.map(t=>`<li>${t}</li>`).join("");
+      return `
+        <div class="ct-card">
+          <div class="ct-head">
+            <span class="ct-name">${icone} ${nome}</span>
+            <span class="ct-date">${datas}</span>
+          </div>
+          <ul>${li}</ul>
+          <div class="ct-fontes"><b>Fontes:</b> ${temas.fontes}</div>
+        </div>
+      `;
+    }).join("");
+
+    bodyHtml = `
+      <div class="hero">
+        <h1>${prova.nome}</h1>
+        <p>${tri.nome} · ${prova.periodo} · 4º Ano</p>
+      </div>
+      ${provaTabs}
+      <div class="cal-list">
+        ${dayRows}
+      </div>
+      <div class="cal-themes">
+        <div class="ct-title">TEMAS DE CADA PROVA</div>
+        ${themeCards}
+      </div>
+    `;
+  }
 
   return `
     <div class="topbar">
@@ -4045,17 +4320,8 @@ function renderHome(){
       </div>
     </div>
     <div class="screen">
-      <div class="hero">
-        <h1>Provas Parciais</h1>
-        <p>2º Trimestre · 4º Ano</p>
-      </div>
-      <div class="cal-list">
-        ${dayRows}
-      </div>
-      <div class="cal-themes">
-        <div class="ct-title">TEMAS DE CADA PROVA</div>
-        ${themeCards}
-      </div>
+      <div class="tri-tabs">${triTabs}</div>
+      ${bodyHtml}
       <div class="footer-note">Feito com carinho pra Carol 💕</div>
     </div>
   `;
@@ -4196,6 +4462,14 @@ function renderSlides(t){
 
 function renderVideo(t){
   const v = t.video;
+  if(!v){
+    return `
+      <div class="video-pending">
+        <div class="video-pending-ic">🎬</div>
+        <div class="video-pending-txt">A Lumi ainda está gravando esse vídeo!<br>Volte aqui em breve 💕</div>
+      </div>
+    `;
+  }
   if(v.drive){
     return `
       <div class="video-frame-wrap">
@@ -4325,6 +4599,7 @@ function renderAtividades(t){
   else if(atv.tipo === "conversor") inner = renderAtvConversor(atv);
   else if(atv.tipo === "algoritmo") inner = renderAtvAlgoritmo(atv);
   else if(atv.tipo === "array") inner = renderAtvArray(atv);
+  else if(atv.tipo === "solidos-elementos") inner = renderAtvSolidos(atv);
 
   return `${backBtn}<div class="atv-box">${inner}</div>`;
 }
@@ -4564,6 +4839,44 @@ function renderAtvArray(atv){
     </div>
     <div class="atv-step-label" style="text-align:center;margin:10px 0;">${lin} × ${col} = ${total}</div>
     <div class="atv-array-grid" style="grid-template-columns:repeat(${col}, 30px);">${cells}</div>
+  `;
+}
+
+/* ---------- solidos-elementos: contar faces, arestas e vértices ---------- */
+function renderAtvSolidos(atv){
+  const total = atv.solidos.length;
+  const s = atv.solidos[atvState.rodada % total];
+  const v = atvState.algoritmoVals;
+  const answered = atvState.answered;
+  function cls(field, correctVal){
+    if(!answered) return "";
+    return normalizeNum(v[field]) === String(correctVal) ? "correct" : "wrong";
+  }
+  let feedback = "";
+  if(answered){
+    const certo = normalizeNum(v.faces)===String(s.faces) && normalizeNum(v.arestas)===String(s.arestas) && normalizeNum(v.vertices)===String(s.vertices);
+    feedback = `<div class="atv-feedback ${certo?'ok':'bad'}">${certo?'✅ Isso! ':'❌ Quase! '}${s.nome}: ${s.faces} faces, ${s.arestas} arestas e ${s.vertices} vértices.</div>
+      <button class="atv-next-btn" data-action="atv-next-round">${atvState.rodada < total-1 ? 'Próximo sólido' : 'Recomeçar'} ${ARROW_RIGHT}</button>`;
+  }
+  return `
+    <h3>${atv.titulo}</h3>
+    <div class="atv-instr">${atv.instrucao}</div>
+    <div class="atv-progress">Sólido ${atvState.rodada+1} de ${total} · ✅ ${atvState.acertos}/${atvState.totalFeitas}</div>
+    <div class="atv-step-label" style="text-align:center;font-size:44px;margin-bottom:6px;">${s.emoji}</div>
+    <div class="atv-step-label" style="text-align:center;margin-bottom:14px;">${s.nome}</div>
+    <div class="atv-step-row">
+      <span class="atv-step-label" style="font-size:15px;">Faces:</span>
+      <input class="atv-step-input ${cls('faces', s.faces)}" type="text" inputmode="numeric" value="${v.faces||''}" ${answered?'disabled':''} data-action-input="solido-faces" style="width:70px;" />
+    </div>
+    <div class="atv-step-row">
+      <span class="atv-step-label" style="font-size:15px;">Arestas:</span>
+      <input class="atv-step-input ${cls('arestas', s.arestas)}" type="text" inputmode="numeric" value="${v.arestas||''}" ${answered?'disabled':''} data-action-input="solido-arestas" style="width:70px;" />
+    </div>
+    <div class="atv-step-row">
+      <span class="atv-step-label" style="font-size:15px;">Vértices:</span>
+      <input class="atv-step-input ${cls('vertices', s.vertices)}" type="text" inputmode="numeric" value="${v.vertices||''}" ${answered?'disabled':''} data-action-input="solido-vertices" style="width:70px;" />
+    </div>
+    ${!answered ? `<button class="atv-check-btn" data-action="atv-check-solido">Conferir</button>` : feedback}
   `;
 }
 
@@ -4808,6 +5121,13 @@ function attachHandlers(){
       const topic = el.dataset.topic;
 
       if(action === "go-home") navigate({view:"home"});
+      else if(action === "cal-tri"){
+        state.calTab.tri = el.dataset.tri;
+        const tri = currentTri();
+        if(tri.provas && tri.provas.length) state.calTab.prova = tri.provas[0].id;
+        render();
+      }
+      else if(action === "cal-prova"){ state.calTab.prova = el.dataset.prova; render(); }
       else if(action === "open-subject"){ studyLocalState.slideIdx=0; studyLocalState.flashIdx=0; studyLocalState.flashFlipped=false; navigate({view:"subject", subjId:subj}); }
       else if(action === "open-study"){ studyLocalState.slideIdx=0; studyLocalState.flashIdx=0; studyLocalState.flashFlipped=false; atvState.activeIdx=null; navigate({view:"study", subjId:subj, topicId:topic, tab:"video"}); }
       else if(action === "study-tab"){ if(el.dataset.tab !== "atividades") atvState.activeIdx=null; navigate({view:"study", subjId:subj, topicId:topic, tab:el.dataset.tab}); }
@@ -4846,7 +5166,7 @@ function attachHandlers(){
       else if(action === "atv-next-round"){
         const t = currentStudyTopic();
         const atv = t.atividades[atvState.activeIdx];
-        const totalRodadas = atv.rodadas ? atv.rodadas.length : (atv.conjuntos ? atv.conjuntos.length : 1);
+        const totalRodadas = atv.rodadas ? atv.rodadas.length : (atv.conjuntos ? atv.conjuntos.length : (atv.solidos ? atv.solidos.length : 1));
         atvState.rodada = (atvState.rodada + 1) % totalRodadas;
         resetAtvRodadaState();
         if(atv.tipo === "ordenar"){
@@ -4902,6 +5222,17 @@ function attachHandlers(){
         atvState.conversorValue = "";
         render();
       }
+      else if(action === "atv-check-solido"){
+        const t = currentStudyTopic();
+        const atv = t.atividades[atvState.activeIdx];
+        const s = atv.solidos[atvState.rodada % atv.solidos.length];
+        atvState.answered = true;
+        atvState.totalFeitas += 1;
+        const v = atvState.algoritmoVals;
+        const certo = normalizeNum(v.faces)===String(s.faces) && normalizeNum(v.arestas)===String(s.arestas) && normalizeNum(v.vertices)===String(s.vertices);
+        if(certo) atvState.acertos += 1;
+        render();
+      }
     };
   });
 
@@ -4916,6 +5247,9 @@ function attachHandlers(){
       else if(kind === "algo-linha1") atvState.algoritmoVals.linha1 = val;
       else if(kind === "algo-linha2") atvState.algoritmoVals.linha2 = val;
       else if(kind === "algo-total") atvState.algoritmoVals.total = val;
+      else if(kind === "solido-faces") atvState.algoritmoVals.faces = val;
+      else if(kind === "solido-arestas") atvState.algoritmoVals.arestas = val;
+      else if(kind === "solido-vertices") atvState.algoritmoVals.vertices = val;
       else if(kind === "array-linhas"){
         const t = currentStudyTopic();
         const atv = t.atividades[atvState.activeIdx];
