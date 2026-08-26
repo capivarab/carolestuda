@@ -549,7 +549,7 @@ window.TRIMESTRES = [
           { dia: "24", mes: "AGO", semana: "segunda-feira", subjId: "matematica" },
           { dia: "25", mes: "AGO", semana: "terça-feira", subjId: "geografia" },
           { dia: "26", mes: "AGO", semana: "quarta-feira", subjId: "portugues" },
-          { dia: "26", mes: "AGO", semana: "quarta-feira", nomodulo: true, nome: "Inglês", icone: "🗣️" },
+          { dia: "26", mes: "AGO", semana: "quarta-feira", subjId: "ingles" },
           { dia: "27", mes: "AGO", semana: "quinta-feira", subjId: "historia" },
           { dia: "27", mes: "AGO", semana: "quinta-feira", obs: "turmas do matutino", nomodulo: true, nome: "Redação", icone: "✏️" },
           { dia: "28", mes: "AGO", semana: "sexta-feira", obs: "turmas do vespertino", nomodulo: true, nome: "Redação", icone: "✏️" },
@@ -591,9 +591,11 @@ window.TRIMESTRES = [
           },
           portugues: {
             temas: [
-              "Leitura e interpretação: características do texto dramático",
+              "Leitura e interpretação: relato de viagem (gênero textual)",
               "Inferência de informações no texto",
-              "Morfologia: verbos, substantivos, adjetivos e pronomes",
+              "Verbos: infinitivo e conjugações",
+              "Concordância verbal e nominal",
+              "Morfologia: substantivos, adjetivos e pronomes",
               "Significado das palavras"
             ],
             fontes: "Livro, páginas 154, 155, 184 a 187, 210 a 213, 255 e 256, 288 a 290 · Caderno · Atividades impressas"
@@ -3784,7 +3786,7 @@ window.SUBJECTS.portugues = {
     },
     {
       id: "coesao-textual",
-      provas: ["parciais", "abrangentes"],
+      provas: ["parciais"],
       titulo: "Coesão textual",
       subtitulo: "Pronomes e sinônimos para retomar informação",
       slides: [
@@ -3819,6 +3821,144 @@ window.SUBJECTS.portugues = {
         { frente: "Quais são as duas formas de retomar um substantivo sem repeti-lo?", verso: "Usando um pronome (ex: ela, eles) ou usando outro substantivo com sentido parecido (sinônimo)." },
         { frente: "Na frase 'Os jogadores entraram. Os participantes estavam ansiosos', como 'participantes' está funcionando?", verso: "Como um sinônimo que retoma 'jogadores', evitando repetir a mesma palavra." },
         { frente: "O que significa um substantivo estar 'implícito' em uma expressão?", verso: "Significa que ele não aparece escrito, mas pode ser entendido como presente, escondido no sentido da frase." }
+      ]
+    },
+    {
+      id: "verbos",
+      provas: ["abrangentes"],
+      titulo: "Verbos: infinitivo e conjugações",
+      subtitulo: "O que muda, o que não muda",
+      slides: [
+        {
+          icone: "🏃",
+          titulo: "O que é um verbo",
+          corpo: "Verbo é a palavra que indica <b>ação</b>, <b>estado</b> ou <b>fenômeno</b> — e ele muda de forma dependendo de quem pratica a ação, de quando ela acontece e se é uma ou várias pessoas.<br><br>Exemplo: <b>andou, anda, andaram, andam</b> — todas essas formas vêm do mesmo verbo <b>andar</b>!",
+          dica: "Repare: a 'raiz' do verbo (and-) fica igual, só a terminação muda."
+        },
+        {
+          icone: "🧊",
+          titulo: "O verbo no infinitivo",
+          corpo: "Quando o verbo <b>não está flexionado</b> — ou seja, não indica pessoa, número nem tempo — ele está no <b>infinitivo</b>.<br><br>É a forma que aparece nos dicionários: <b>andar, comer, partir</b>.",
+          dica: "Na tira do Armandinho, 'multiplicar, somar, subtrair, dividir' estão todos no infinitivo — por isso não mudam com quem fala."
+        },
+        {
+          icone: "🔤",
+          titulo: "As três conjugações",
+          corpo: "A terminação do infinitivo mostra a <b>conjugação</b> do verbo:<br><br>🔹 <b>-ar</b> → 1ª conjugação (tomar, chorar, andar)<br>🔹 <b>-er</b> → 2ª conjugação (resolver, parecer)<br>🔹 <b>-ir</b> → 3ª conjugação (partir, dormir)",
+          dica: "O verbo pôr (e seus derivados, como compor e propor) também é da 2ª conjugação, mesmo terminando em -or!"
+        },
+        {
+          icone: "🕵️",
+          titulo: "Descobrindo a conjugação de um verbo flexionado",
+          corpo: "Se o verbo já está flexionado (como 'amarram', 'sairão', 'fazemos'), primeiro descubra o <b>infinitivo</b> dele — depois é só olhar a terminação.<br><br><b>amarram</b> → amarrar (-ar, 1ª)<br><b>sairão</b> → sair (-ir, 3ª)<br><b>fazemos</b> → fazer (-er, 2ª)",
+          dica: "Pergunte-se: 'o quê fazer?' — a resposta é sempre o infinitivo."
+        },
+        {
+          icone: "✅",
+          titulo: "Resumo rápido",
+          corpo: "<b>Infinitivo</b> = forma 'crua' do verbo, sem indicar pessoa, tempo ou número.<br><b>Conjugação</b> = grupo do verbo, definido pela terminação do infinitivo (-ar, -er, -ir).",
+          dica: "Truque: para achar o infinitivo de qualquer verbo, complete a frase 'Eu preciso ___'."
+        }
+      ],
+      flashcards: [
+        { frente: "O que é um verbo?", verso: "Palavra que indica ação, estado ou fenômeno, podendo se flexionar em pessoa, número e tempo." },
+        { frente: "O que caracteriza um verbo no infinitivo?", verso: "Não estar flexionado — não indica pessoa, número nem tempo. Termina em -ar, -er ou -ir." },
+        { frente: "Qual conjugação tem verbos terminados em -ar?", verso: "1ª conjugação (ex: andar, tomar, chorar)." },
+        { frente: "Qual conjugação tem verbos terminados em -er?", verso: "2ª conjugação (ex: resolver, parecer, e também pôr)." },
+        { frente: "Qual conjugação tem verbos terminados em -ir?", verso: "3ª conjugação (ex: partir, dormir)." },
+        { frente: "Qual é o infinitivo do verbo 'sairão'?", verso: "Sair (3ª conjugação, terminado em -ir)." }
+      ]
+    },
+    {
+      id: "concordancia",
+      provas: ["abrangentes"],
+      titulo: "Concordância verbal e nominal",
+      subtitulo: "Verbo, artigo e adjetivo combinando com a frase",
+      slides: [
+        {
+          icone: "🤝",
+          titulo: "O que é concordância",
+          corpo: "Concordância é quando as palavras de uma frase 'combinam' entre si — em <b>número</b> (singular/plural), <b>gênero</b> (masculino/feminino) e <b>pessoa</b>.<br><br>Existem dois tipos: <b>concordância verbal</b> (verbo com o sujeito) e <b>concordância nominal</b> (artigo e adjetivo com o substantivo).",
+          dica: "Se o sujeito é plural, o verbo também vai para o plural — e vice-versa."
+        },
+        {
+          icone: "🔢",
+          titulo: "Concordância verbal: pessoa e número",
+          corpo: "O verbo concorda com a pessoa que pratica a ação.<br><br><b>Eu conto</b> histórias. (1ª pessoa, singular)<br><b>Nós contamos</b> histórias. (1ª pessoa, plural)<br><b>Elas contam</b> histórias. (3ª pessoa, plural)",
+          dica: "Se o sujeito está no plural, o verbo também fica no plural."
+        },
+        {
+          icone: "🗣️",
+          titulo: "'Nós' e 'a gente': o mesmo sentido, verbos diferentes",
+          corpo: "'Nós' e 'a gente' indicam mais de uma pessoa, mas usam o verbo de formas diferentes:<br><br><b>Nós contamos</b> histórias. (verbo no plural)<br><b>A gente conta</b> histórias. (verbo no singular, mesmo com sentido de várias pessoas)",
+          dica: "'A gente' é tratado como uma expressão no singular — por isso o verbo também fica no singular."
+        },
+        {
+          icone: "🏷️",
+          titulo: "Concordância nominal: artigo e adjetivo",
+          corpo: "O <b>artigo</b> e o <b>adjetivo</b> concordam em gênero e número com o <b>substantivo</b> a que se referem.<br><br><b>as calçadas estreitas</b> (feminino, plural)<br><b>o caminho estreito</b> (masculino, singular)",
+          dica: "Troque o substantivo e observe: o artigo e o adjetivo mudam junto com ele!"
+        },
+        {
+          icone: "💡",
+          titulo: "Adjetivos que não mudam de forma",
+          corpo: "Alguns adjetivos têm uma única forma para masculino e feminino.<br><br>Ana escreveu um <b>livro excelente</b>. (masculino)<br>Ana escreveu uma <b>obra excelente</b>. (feminino)<br><br>Só o substantivo e o artigo mudam — o adjetivo 'excelente' continua igual.",
+          dica: "Fique atento: nem todo adjetivo tem uma forma diferente para cada gênero."
+        }
+      ],
+      flashcards: [
+        { frente: "O que é concordância verbal?", verso: "É quando o verbo se ajusta em pessoa e número ao sujeito da frase." },
+        { frente: "O que é concordância nominal?", verso: "É quando o artigo e o adjetivo se ajustam em gênero e número ao substantivo." },
+        { frente: "Quando usamos 'nós', como fica o verbo?", verso: "No plural. Ex: Nós contamos." },
+        { frente: "Quando usamos 'a gente', como fica o verbo?", verso: "No singular, mesmo indicando várias pessoas. Ex: A gente conta." },
+        { frente: "Na frase 'as calçadas estreitas', por que 'estreitas' está no feminino plural?", verso: "Porque concorda com o substantivo 'calçadas', que é feminino e plural." },
+        { frente: "O adjetivo 'excelente' muda entre masculino e feminino?", verso: "Não — tem uma única forma para os dois gêneros (livro excelente / obra excelente)." }
+      ]
+    },
+    {
+      id: "relato-de-viagem",
+      provas: ["abrangentes"],
+      titulo: "Relato de viagem",
+      subtitulo: "Um gênero para contar experiências vividas",
+      slides: [
+        {
+          icone: "🧳",
+          titulo: "O que é um relato de viagem",
+          corpo: "É um texto em que alguém <b>conta</b>, com suas próprias palavras, uma experiência de viagem — os lugares por onde passou, o que viveu e sentiu.<br><br>Geralmente é escrito na <b>primeira pessoa</b> (eu ou nós), porque quem escreve participou da viagem.",
+          dica: "Se o texto usa 'eu' ou 'nós' para contar o que aconteceu, é um forte sinal de relato pessoal."
+        },
+        {
+          icone: "🌍",
+          titulo: "Lugares e memórias",
+          corpo: "No relato de viagem, é comum indicar <b>nomes de lugares</b> por onde a pessoa passou ou ficou — isso ajuda o leitor a ter uma noção mais objetiva da viagem.<br><br>No relato 'Férias na Antártica', aparecem lugares como Antártica, Convergência Antártica e o Drake.",
+          dica: "Fique de olho nos nomes próprios de lugares — eles situam o leitor na jornada."
+        },
+        {
+          icone: "👭",
+          titulo: "Como o relato evita repetir os nomes",
+          corpo: "Como quem narra está sempre presente na história, é comum usar os pronomes <b>eu</b> e <b>nós</b>, ou expressões como <b>a gente</b>, para se referir a quem viveu a viagem — em vez de repetir os nomes próprios o tempo todo.",
+          dica: "Reparar nos pronomes ajuda a saber quem é o narrador da viagem."
+        },
+        {
+          icone: "🎢",
+          titulo: "Emoções e experiências vividas",
+          corpo: "O relato de viagem também conta como a pessoa se sentiu durante a viagem — medo, coragem, diversão — e quais atividades ela fez, sejam elas em grupo (<b>coletivas</b>) ou sozinha (<b>individuais</b>).",
+          dica: "Observe se a brincadeira ou atividade contada foi feita em grupo ou por uma pessoa só."
+        },
+        {
+          icone: "📝",
+          titulo: "Resumo: características do relato de viagem",
+          corpo: "✅ Escrito na 1ª pessoa (eu/nós)<br>✅ Conta uma experiência real e vivida<br>✅ Cita lugares visitados<br>✅ Compartilha impressões e sentimentos sobre a viagem",
+          dica: "Pense: 'quem escreveu, viveu a viagem?' — no relato, a resposta é sim!"
+        }
+      ],
+      flashcards: [
+        { frente: "O que é um relato de viagem?", verso: "Um texto que conta, com as palavras de quem viveu, uma experiência real de viagem." },
+        { frente: "Em que pessoa o relato de viagem costuma ser escrito?", verso: "Na primeira pessoa (eu ou nós), porque quem escreve participou da viagem." },
+        { frente: "Por que um relato de viagem costuma citar nomes de lugares?", verso: "Para dar ao leitor uma noção mais objetiva de por onde a viagem passou." },
+        { frente: "Que pronomes costumam aparecer bastante em um relato de viagem?", verso: "Eu e nós, ou expressões como 'a gente'." },
+        { frente: "O que mais, além dos lugares, o relato de viagem costuma compartilhar?", verso: "As emoções e impressões de quem viveu a viagem." },
+        { frente: "Uma atividade contada por várias pessoas ao mesmo tempo é considerada:", verso: "Uma atividade coletiva." }
       ]
     }
   ],
@@ -3874,7 +4014,7 @@ window.SUBJECTS.portugues = {
     },
     {
       pergunta: "Na frase 'O cachorro correu até ela e a abraçou com o focinho', a palavra 'ela' é um substantivo ou um pronome? Por quê?",
-      provas: ["parciais", "abrangentes"],
+      provas: ["parciais"],
       opcoes: ["É um pronome, pois substitui um substantivo (uma pessoa) mencionado anteriormente no texto","É um substantivo, pois dá nome a um objeto","É um adjetivo, pois descreve uma característica","É um verbo, pois indica uma ação"],
       correta: 0,
       explicacao: "'Ela' é um pronome, pois substitui o nome de uma pessoa (substantivo) que foi mencionada antes no texto, evitando a repetição do nome."
@@ -3958,7 +4098,7 @@ window.SUBJECTS.portugues = {
     },
     {
       pergunta: "Por que pronomes são importantes para a coesão (a 'cola' que liga as partes) de um texto?",
-      provas: ["parciais", "abrangentes"],
+      provas: ["parciais"],
       opcoes: ["Porque evitam a repetição excessiva dos mesmos substantivos, tornando o texto mais fluido","Porque pronomes sempre tornam o texto mais confuso","Porque pronomes substituem apenas adjetivos, nunca substantivos","Porque pronomes não têm relação com a coesão textual"],
       correta: 0,
       explicacao: "Os pronomes evitam a repetição constante dos mesmos substantivos ao longo de um texto, tornando a leitura mais fluida e natural — por isso são fundamentais para a coesão textual."
@@ -4014,49 +4154,49 @@ window.SUBJECTS.portugues = {
     },
     {
       pergunta: "Na frase 'As peças dos jogadores devem ser colocadas no tabuleiro. Elas ficam nas extremidades', a palavra 'Elas' retoma qual substantivo?",
-      provas: ["parciais", "abrangentes"],
+      provas: ["parciais"],
       opcoes: ["Jogadores","Peças","Tabuleiro","Extremidades"],
       correta: 1,
       explicacao: "'Elas' é um pronome que substitui 'as peças', evitando repetir essa expressão na segunda frase."
     },
     {
       pergunta: "Considere: 'Os jogadores entraram em campo. Os participantes pareciam ansiosos.' Como a palavra 'participantes' está funcionando no texto?",
-      provas: ["parciais", "abrangentes"],
+      provas: ["parciais"],
       opcoes: ["Como um sinônimo que retoma 'jogadores', evitando repetição","Como um pronome que substitui 'campo'","Como um adjetivo que descreve 'jogadores'","Como uma palavra sem relação com o restante do texto"],
       correta: 0,
       explicacao: "'Participantes' é outro substantivo, usado como sinônimo de 'jogadores', para retomar a ideia sem repetir exatamente a mesma palavra — isso é coesão textual."
     },
     {
       pergunta: "Na expressão 'as peças de um jogador' e 'as do adversário', o substantivo 'peças' está implícito na segunda expressão. O que isso significa?",
-      provas: ["parciais", "abrangentes"],
+      provas: ["parciais"],
       opcoes: ["Que 'peças' não aparece escrito na segunda expressão, mas pode ser entendido como presente","Que 'peças' foi escrito duas vezes na frase","Que a segunda expressão não tem nenhum substantivo","Que 'adversário' substitui completamente o sentido de 'peças'"],
       correta: 0,
       explicacao: "Um substantivo implícito é aquele que não aparece escrito, mas está subentendido pelo contexto: 'as do adversário' significa 'as peças do adversário', mesmo sem repetir a palavra 'peças'."
     },
     {
       pergunta: "Leia: 'Apesar do nome difícil, esse jogo de origem chinesa é bem simples e seu tabuleiro, mais fácil ainda de fazer em casa. ___ tem a forma de um X.' Qual pronome completa corretamente a lacuna, retomando 'tabuleiro'?",
-      provas: ["parciais", "abrangentes"],
+      provas: ["parciais"],
       opcoes: ["Ela","Eles","Elas","Ele"],
       correta: 3,
       explicacao: "'Tabuleiro' é uma palavra masculina e singular, então o pronome correto para retomá-la é 'Ele'."
     },
     {
       pergunta: "Qual é a principal vantagem de usar pronomes ou sinônimos para retomar um substantivo já citado em um texto?",
-      provas: ["parciais", "abrangentes"],
+      provas: ["parciais"],
       opcoes: ["Tornar o texto mais difícil de entender","Evitar a repetição excessiva da mesma palavra, tornando o texto mais fluido","Aumentar o número de palavras do texto sem necessidade","Confundir o leitor sobre quem está sendo mencionado"],
       correta: 1,
       explicacao: "Retomar substantivos com pronomes ou sinônimos evita repetições cansativas e torna a leitura mais natural e agradável — essa é a função da coesão textual."
     },
     {
       pergunta: "Na frase 'Cada jogador deve mover sua peça pelas linhas do tabuleiro, com o objetivo de encurralar as peças do adversário até que ELAS não possam mais se mover', a palavra 'ELAS' retoma qual trecho?",
-      provas: ["parciais", "abrangentes"],
+      provas: ["parciais"],
       opcoes: ["O tabuleiro","As linhas","As peças do adversário","O jogador"],
       correta: 2,
       explicacao: "'Elas' substitui 'as peças do adversário', mencionado imediatamente antes, evitando repetir essa expressão inteira."
     },
     {
       pergunta: "Em um texto sobre um livro, aparece: 'O livro foi traduzido preservando o estilo do original. A obra retrata o mundo da fantasia.' Qual palavra retoma 'o livro' na segunda frase?",
-      provas: ["parciais", "abrangentes"],
+      provas: ["parciais"],
       opcoes: ["O estilo","O original","A fantasia","A obra"],
       correta: 3,
       explicacao: "'A obra' é um substantivo sinônimo de 'o livro', usado para retomar a ideia sem repetir exatamente a mesma palavra — um recurso de coesão textual."
@@ -4133,7 +4273,7 @@ window.SUBJECTS.portugues = {
     },
     {
       pergunta: "Qual destas frases mostra um substantivo sendo retomado por um SINÔNIMO, e não por um pronome?",
-      provas: ["parciais", "abrangentes"],
+      provas: ["parciais"],
       opcoes: ["Maria chegou cedo. Ela estava muito animada.","O cachorro latiu. Ele queria atenção.","A menina sorriu. Ela estava feliz.","O professor explicou a lição. O educador era muito paciente."],
       correta: 3,
       explicacao: "Na primeira frase, 'o educador' é um substantivo sinônimo de 'o professor', usado para retomar a ideia sem repetir a mesma palavra — diferente das outras opções, que usam pronomes (ela, ele)."
@@ -4154,7 +4294,7 @@ window.SUBJECTS.portugues = {
     },
     {
       pergunta: "Em uma frase, o substantivo 'fadas' é retomado mais adiante pela expressão 'essas criaturas mágicas'. Que recurso de coesão está sendo usado?",
-      provas: ["parciais", "abrangentes"],
+      provas: ["parciais"],
       opcoes: ["Retomada por pronome pessoal","Repetição exata da mesma palavra","Retomada por sinônimo, usando outro substantivo com sentido equivalente","Não há nenhum recurso de coesão nessa frase"],
       correta: 2,
       explicacao: "'Essas criaturas mágicas' é uma expressão substantiva que retoma 'fadas' com sentido equivalente, sem repetir a mesma palavra — um exemplo de coesão por sinônimo."
@@ -4172,6 +4312,513 @@ window.SUBJECTS.portugues = {
       opcoes: ["Famoso", "Perigoso", "Carinhoso", "Beleza"],
       correta: 3,
       explicacao: "'Beleza' vem do adjetivo 'belo' mais o sufixo -eza, formando um substantivo. As outras opções (famoso, perigoso, carinhoso) são adjetivos formados com o sufixo -oso, e não substantivos."
+    },
+    {
+      pergunta: "O que é um verbo?",
+      provas: ["abrangentes"],
+      opcoes: ["Palavra que indica ação, estado ou fenômeno, podendo se flexionar em pessoa, número e tempo", "Palavra que só nomeia coisas, sem indicar ação", "Palavra que caracteriza um substantivo", "Palavra que substitui um nome já citado"],
+      correta: 0,
+      explicacao: "Verbo é a classe de palavras que indica ação, estado ou fenômeno, e se flexiona conforme a pessoa, o número e o tempo (ex: andou, anda, andaram, andam)."
+    },
+    {
+      pergunta: "Qual das formas abaixo está no infinitivo?",
+      provas: ["abrangentes"],
+      opcoes: ["Anda", "Andou", "Andar", "Andam"],
+      correta: 2,
+      explicacao: "'Andar' é a forma não flexionada do verbo — não indica pessoa, número nem tempo. É a forma que aparece no dicionário."
+    },
+    {
+      pergunta: "Os verbos 'multiplicar, somar, subtrair e dividir', na tira do Armandinho, estão no infinitivo porque:",
+      provas: ["abrangentes"],
+      opcoes: ["Indicam quem pratica a ação", "Estão no tempo passado", "Não indicam pessoa, número ou tempo", "Estão flexionados no plural"],
+      correta: 2,
+      explicacao: "Verbos no infinitivo não indicam pessoa, número nem tempo — são a forma 'crua' do verbo, sem flexão."
+    },
+    {
+      pergunta: "Verbos terminados em -ar, como 'andar' e 'tomar', pertencem à:",
+      provas: ["abrangentes"],
+      opcoes: ["1ª conjugação", "2ª conjugação", "3ª conjugação", "Nenhuma conjugação"],
+      correta: 0,
+      explicacao: "Verbos terminados em -ar no infinitivo pertencem à 1ª conjugação."
+    },
+    {
+      pergunta: "O verbo 'dormir' pertence à:",
+      provas: ["abrangentes"],
+      opcoes: ["1ª conjugação (-ar)", "2ª conjugação (-er)", "3ª conjugação (-ir)", "Nenhuma das anteriores"],
+      correta: 2,
+      explicacao: "'Dormir' termina em -ir no infinitivo, o que o coloca na 3ª conjugação."
+    },
+    {
+      pergunta: "O verbo 'resolver' pertence à:",
+      provas: ["abrangentes"],
+      opcoes: ["1ª conjugação (-ar)", "2ª conjugação (-er)", "3ª conjugação (-ir)", "Nenhuma das anteriores"],
+      correta: 1,
+      explicacao: "'Resolver' termina em -er no infinitivo, o que o coloca na 2ª conjugação."
+    },
+    {
+      pergunta: "Qual é o infinitivo do verbo flexionado 'amarram'?",
+      provas: ["abrangentes"],
+      opcoes: ["Amarra", "Amarrei", "Amarrar", "Amarraram"],
+      correta: 2,
+      explicacao: "Para achar o infinitivo, pense: 'o quê fazer?' — amarrar. O verbo termina em -ar, então é da 1ª conjugação."
+    },
+    {
+      pergunta: "O verbo 'pôr' (e seus derivados, como compor e propor) pertence à:",
+      provas: ["abrangentes"],
+      opcoes: ["1ª conjugação", "2ª conjugação, mesmo terminando em -or", "3ª conjugação", "Não tem conjugação definida"],
+      correta: 1,
+      explicacao: "O verbo 'pôr' e seus derivados são uma exceção: apesar de terminarem em -or, pertencem à 2ª conjugação."
+    },
+    {
+      pergunta: "Qual é o infinitivo do verbo flexionado 'sairão'?",
+      provas: ["abrangentes"],
+      opcoes: ["Saiu", "Sair", "Saía", "Saindo"],
+      correta: 1,
+      explicacao: "'Sairão' vem do verbo 'sair', terminado em -ir, ou seja, da 3ª conjugação."
+    },
+    {
+      pergunta: "Qual é o infinitivo do verbo flexionado 'fazemos'?",
+      provas: ["abrangentes"],
+      opcoes: ["Fazer", "Fazendo", "Fazia", "Feito"],
+      correta: 0,
+      explicacao: "'Fazemos' vem do verbo 'fazer', terminado em -er, ou seja, da 2ª conjugação."
+    },
+    {
+      pergunta: "O que é concordância verbal?",
+      provas: ["abrangentes"],
+      opcoes: ["O verbo se ajusta em pessoa e número ao sujeito da frase", "O substantivo muda de gênero sozinho", "O adjetivo troca de posição na frase", "Duas frases usam a mesma pontuação"],
+      correta: 0,
+      explicacao: "Concordância verbal é o ajuste do verbo à pessoa e ao número do sujeito que pratica a ação."
+    },
+    {
+      pergunta: "Na frase 'Nós contamos histórias', o verbo 'contamos' está:",
+      provas: ["abrangentes"],
+      opcoes: ["No plural, porque concorda com 'nós'", "No singular", "No infinitivo", "No futuro"],
+      correta: 0,
+      explicacao: "'Nós' é 1ª pessoa do plural, por isso o verbo também vai para o plural: 'contamos'."
+    },
+    {
+      pergunta: "Complete: 'A gente ___ histórias.'",
+      provas: ["abrangentes"],
+      opcoes: ["Conta", "Contam", "Contamos", "Contarão"],
+      correta: 0,
+      explicacao: "'A gente' é tratada como uma expressão no singular, então o verbo também fica no singular: 'a gente conta'."
+    },
+    {
+      pergunta: "Por que 'a gente' usa o verbo no singular, mesmo indicando várias pessoas?",
+      provas: ["abrangentes"],
+      opcoes: ["Porque 'a gente' é tratada como uma expressão no singular", "Porque sempre se refere a uma única pessoa", "Porque é uma gíria sem regra de concordância", "Porque o verbo nunca concorda com 'a gente'"],
+      correta: 0,
+      explicacao: "Mesmo indicando mais de uma pessoa, a expressão 'a gente' concorda com o verbo no singular."
+    },
+    {
+      pergunta: "Na frase 'as calçadas estreitas', o adjetivo 'estreitas' concorda com 'calçadas' em:",
+      provas: ["abrangentes"],
+      opcoes: ["Gênero e número", "Apenas tempo verbal", "Apenas pessoa", "Não há concordância nessa frase"],
+      correta: 0,
+      explicacao: "O adjetivo 'estreitas' está no feminino plural para concordar com o substantivo 'calçadas', também feminino e plural."
+    },
+    {
+      pergunta: "Se a palavra 'calçadas' (feminino, plural) fosse trocada por 'caminho' (masculino, singular), como ficaria o adjetivo 'estreitas'?",
+      provas: ["abrangentes"],
+      opcoes: ["Estreito", "Estreitas", "Estreitos", "Estreita"],
+      correta: 0,
+      explicacao: "O adjetivo deve concordar com o novo substantivo: 'caminho' é masculino e singular, então o adjetivo fica 'estreito'."
+    },
+    {
+      pergunta: "Em 'Ana escreveu um livro excelente' e 'Ana escreveu uma obra excelente', o que se percebe sobre o adjetivo 'excelente'?",
+      provas: ["abrangentes"],
+      opcoes: ["Tem a mesma forma para masculino e feminino", "Muda para 'excelenta' no feminino", "Só existe no plural", "Concorda apenas com o verbo, não com o substantivo"],
+      correta: 0,
+      explicacao: "'Excelente' é um adjetivo que tem uma única forma para os dois gêneros — não muda entre masculino e feminino."
+    },
+    {
+      pergunta: "Reescrevendo 'Os jovens brasileiros estavam entusiasmados' no singular e feminino, a frase fica:",
+      provas: ["abrangentes"],
+      opcoes: ["A jovem brasileira estava entusiasmada", "Os jovens brasileiras estavam entusiasmado", "A jovem brasileiro estava entusiasmada", "As jovens brasileiras estavam entusiasmadas"],
+      correta: 0,
+      explicacao: "No singular e feminino, todas as palavras relacionadas (artigo, substantivo, adjetivos e verbo) precisam concordar: 'A jovem brasileira estava entusiasmada'."
+    },
+    {
+      pergunta: "Em 'Outros fatores vêm sendo avaliados', o verbo 'vêm' concorda com:",
+      provas: ["abrangentes"],
+      opcoes: ["Fatores (plural)", "Avaliados (adjetivo)", "Outros (artigo/pronome)", "Sendo (verbo auxiliar)"],
+      correta: 0,
+      explicacao: "'Vêm' concorda com o sujeito 'fatores', que está no plural."
+    },
+    {
+      pergunta: "Qual das frases está com a concordância verbal CORRETA?",
+      provas: ["abrangentes"],
+      opcoes: ["As gatas amareladas foram cuidadas pela veterinária", "As gatas amareladas foi cuidada pela veterinária", "A gata amarelada foram cuidadas pela veterinária", "As gata amarelada foi cuidado pela veterinária"],
+      correta: 0,
+      explicacao: "Em 'As gatas amareladas foram cuidadas pela veterinária', todas as palavras (artigo, substantivo, adjetivo e verbo) concordam corretamente no feminino plural."
+    },
+    {
+      pergunta: "O que é um relato de viagem?",
+      provas: ["abrangentes"],
+      opcoes: ["Um texto que conta uma experiência real de viagem, com as palavras de quem viveu", "Um texto que dá instruções passo a passo", "Um texto que anuncia um produto à venda", "Um texto que apresenta apenas dados científicos"],
+      correta: 0,
+      explicacao: "O relato de viagem conta, na perspectiva de quem viveu, uma experiência real acontecida durante uma viagem."
+    },
+    {
+      pergunta: "Em que pessoa um relato de viagem costuma ser escrito?",
+      provas: ["abrangentes"],
+      opcoes: ["3ª pessoa do singular", "1ª pessoa (eu/nós)", "2ª pessoa (tu/você)", "Não tem pessoa definida"],
+      correta: 1,
+      explicacao: "Como quem escreve participou da viagem, o relato costuma ser escrito na 1ª pessoa (eu ou nós)."
+    },
+    {
+      pergunta: "Por que relatos de viagem costumam citar nomes de lugares?",
+      provas: ["abrangentes"],
+      opcoes: ["Para dar ao leitor uma noção mais objetiva de por onde a viagem passou", "Para enfeitar o texto, sem nenhuma função", "Porque é uma regra obrigatória de gramática", "Para confundir o leitor"],
+      correta: 0,
+      explicacao: "Citar os lugares visitados ajuda o leitor a entender melhor o percurso e o contexto real da viagem."
+    },
+    {
+      pergunta: "No relato 'Férias na Antártica', que palavras as irmãs usam para falar de si mesmas sem repetir seus nomes?",
+      provas: ["abrangentes"],
+      opcoes: ["Nós e a gente", "Ele e ela", "Você e vocês", "Isso e aquilo"],
+      correta: 0,
+      explicacao: "As irmãs usam os pronomes 'nós' e a expressão 'a gente' para se referir a si mesmas ao longo do relato."
+    },
+    {
+      pergunta: "Além dos lugares visitados, o que mais um relato de viagem costuma compartilhar?",
+      provas: ["abrangentes"],
+      opcoes: ["Somente números e estatísticas", "Emoções e impressões de quem viveu a viagem", "Apenas receitas de comida", "Apenas o preço da viagem"],
+      correta: 1,
+      explicacao: "O relato de viagem também compartilha sentimentos e impressões vividos durante a experiência, não só fatos objetivos."
+    },
+    {
+      pergunta: "No trecho sobre o Drake ('todo mundo passa mal no barco'), é possível inferir que o mar nesse local geralmente é:",
+      provas: ["abrangentes"],
+      opcoes: ["Calmo e tranquilo", "Agitado", "Congelado e sólido", "Raso"],
+      correta: 1,
+      explicacao: "Se 'todo mundo passa mal' na travessia, é possível inferir que o mar do Drake costuma ser agitado."
+    },
+    {
+      pergunta: "Uma atividade feita por uma pessoa sozinha é chamada de:",
+      provas: ["abrangentes"],
+      opcoes: ["Coletiva", "Individual", "Pública", "Formal"],
+      correta: 1,
+      explicacao: "Quando apenas uma pessoa realiza a atividade, ela é chamada de individual."
+    },
+    {
+      pergunta: "Uma brincadeira feita por várias pessoas ao mesmo tempo é chamada de:",
+      provas: ["abrangentes"],
+      opcoes: ["Individual", "Coletiva", "Particular", "Solitária"],
+      correta: 1,
+      explicacao: "Quando várias pessoas participam juntas, a atividade é chamada de coletiva."
+    },
+    {
+      pergunta: "Segundo o relato, brincadeiras como 'fazer bonecos de neve' e 'construir uma casa de gelo' só são possíveis em lugares como a Antártica porque:",
+      provas: ["abrangentes"],
+      opcoes: ["Têm neve e gelo em abundância", "Têm muito calor", "São lugares desertos, sem água", "Têm poucas pessoas morando"],
+      correta: 0,
+      explicacao: "Essas brincadeiras dependem da presença de neve e gelo, características do clima da Antártica."
+    },
+    {
+      pergunta: "O relato de viagem é diferente de um texto informativo porque:",
+      provas: ["abrangentes"],
+      opcoes: ["O relato conta uma experiência pessoal vivida, enquanto o texto informativo apresenta fatos gerais sobre um assunto", "O relato nunca usa verbos", "O texto informativo é sempre mais curto", "Não existe diferença entre eles"],
+      correta: 0,
+      explicacao: "O relato de viagem tem caráter pessoal e narrativo, enquanto o texto informativo busca apresentar fatos e dados de forma mais geral e objetiva."
+    }
+  ]
+};
+window.SUBJECTS.ingles = {
+  id: "ingles",
+  nome: "Inglês",
+  icone: "🗣️",
+  data: "26/08 · quarta-feira",
+  cor: "#FFEFC2",
+  corBtn: "#B8860B",
+  corDim: "rgba(184,134,11,0.14)",
+  tempoSugeridoMin: 25,
+  topicos: [
+    {
+      id: "circo",
+      provas: ["abrangentes"],
+      titulo: "O Circo: personagens, corpo e posições",
+      subtitulo: "Clowns, acrobats, jugglers and where things are",
+      slides: [
+        {
+          icone: "🎪",
+          titulo: "Circus performers",
+          corpo: "In a circus, there are different performers:<br><br>🤡 <b>Clown</b> — usa trajes e cabelo engraçado, canta e toca instrumentos.<br>🤸 <b>Acrobat</b> — usa os músculos, sobe na corda (<i>climbs a rope</i>) e voa no trapézio (<i>flies on the trapeze</i>).<br>🤹 <b>Juggler</b> — joga bolinhas usando as mãos e os olhos (<i>uses hands and eyes</i>).",
+          dica: "'Acrobat', 'juggler' e 'clown' são as três palavras-chave da Unidade 3!"
+        },
+        {
+          icone: "🖐️",
+          titulo: "Parts of the body: hands and eyes",
+          corpo: "Os artistas de circo usam partes do corpo para suas habilidades: jugglers <b>are good at using</b> their <b>hands</b> and <b>eyes</b>.<br><br><b>Left hand</b> = mão esquerda<br><b>Right hand</b> = mão direita",
+          dica: "'Good at + Ving' = ser bom em fazer algo. Ex: good at juggling."
+        },
+        {
+          icone: "↔️",
+          titulo: "Left, right, and where things are",
+          corpo: "Algumas palavras de posição muito usadas:<br><br><b>left</b> = esquerda · <b>right</b> = direita<br><b>on</b> = em cima de · <b>under</b> = embaixo de<br><b>next to</b> = ao lado de · <b>in</b> = dentro de",
+          dica: "Ex: 'It's on the left, next to the box.'"
+        },
+        {
+          icone: "🎭",
+          titulo: "Present Continuous: o que está acontecendo agora",
+          corpo: "Usamos o <b>Present Continuous</b> (is/are + verbo-ing) para descrever uma ação acontecendo <b>neste momento</b>.<br><br><b>The girl is climbing a rope.</b> (A menina está subindo uma corda.)<br><b>He is throwing and catching plastic balls.</b> (Ele está jogando e pegando bolinhas de plástico.)",
+          dica: "Se a foto mostra alguém FAZENDO algo agora, use is/are + -ing."
+        },
+        {
+          icone: "💪",
+          titulo: "Can and Some",
+          corpo: "Usamos <b>can</b> para falar sobre habilidade:<br><br><b>Can you climb a rope?</b> — Yes, I can.<br><b>Can you throw a ball?</b> — Yes, I can.<br><br>Usamos <b>some</b> para uma quantidade indefinida: <b>There are some clowns in the circus.</b> (Há alguns palhaços no circo.)",
+          dica: "'Can' não muda com a pessoa: I can, you can, he/she can — sempre igual!"
+        },
+        {
+          icone: "🔢",
+          titulo: "Numbers",
+          corpo: "Alguns números por extenso:<br><br>12 = twelve · 14 = fourteen · 15 = fifteen<br>19 = nineteen · 29 = twenty-nine<br>33 = thirty-three · 38 = thirty-eight · 47 = forty-seven",
+          dica: "Repare no padrão dos números de 20 a 90: twenty, thirty, forty... + o número de 1 a 9."
+        }
+      ],
+      flashcards: [
+        { frente: "How do you say 'palhaço' in English?", verso: "Clown." },
+        { frente: "How do you say 'acrobata' in English?", verso: "Acrobat." },
+        { frente: "How do you say 'malabarista' in English?", verso: "Juggler." },
+        { frente: "What are jugglers good at using?", verso: "Their hands and eyes." },
+        { frente: "What's the opposite of 'left'?", verso: "Right." },
+        { frente: "How do you write 'twenty-nine' in numbers?", verso: "29." },
+        { frente: "Complete: 'The girl ___ (climb) a rope right now.'", verso: "is climbing (Present Continuous)." },
+        { frente: "How do you ask about someone's ability using 'can'?", verso: "Can you + verb? Ex: Can you juggle?" }
+      ]
+    },
+    {
+      id: "tarefas-de-casa",
+      provas: ["abrangentes"],
+      titulo: "Tarefas de casa e rotina",
+      subtitulo: "Chores, Simple Present and questions",
+      slides: [
+        {
+          icone: "🏠",
+          titulo: "Chores: tarefas de casa",
+          corpo: "Algumas tarefas domésticas em inglês:<br><br><b>make the bed</b> = arrumar a cama<br><b>help with pets</b> = ajudar com os animais<br><b>water the plants</b> = regar as plantas<br><b>make breakfast</b> = fazer o café da manhã<br><b>do the shopping</b> = fazer compras<br><b>wash the dishes</b> = lavar a louça<br><b>set the table</b> = pôr a mesa",
+          dica: "'Chore' = tarefa de casa. É uma palavra bem usada nos livros de inglês!"
+        },
+        {
+          icone: "☀️",
+          titulo: "Simple Present: rotinas e hábitos",
+          corpo: "Usamos o <b>Simple Present</b> para falar de coisas que acontecem sempre, como rotinas.<br><br><b>He washes the dishes after lunch.</b><br><b>She walks the dog before school.</b>",
+          dica: "Repare no 's' no final do verbo quando a frase é sobre he/she/it: wash → washes, walk → walks."
+        },
+        {
+          icone: "❓",
+          titulo: "Questions in Simple Present com Do/Does",
+          corpo: "Para perguntar no Simple Present, usamos <b>Do</b> (I/you/we/they) ou <b>Does</b> (he/she/it) antes do sujeito — e o verbo principal volta para a forma simples.<br><br><b>When does he wash the dishes?</b> — He washes the dishes after lunch.<br><b>Does she walk the dog?</b> — Yes, she does.",
+          dica: "Com 'does', o verbo perde o 's': 'Does he wash' (não 'washes')."
+        },
+        {
+          icone: "🙋",
+          titulo: "Can: pedindo e oferecendo ajuda",
+          corpo: "Também usamos <b>can</b> para pedir ou oferecer ajuda em casa:<br><br><b>Can you help me with the dishes?</b><br><b>Can I do it?</b> — Sure, you can!",
+          dica: "'Can I...?' pede permissão; 'Can you...?' pede um favor."
+        },
+        {
+          icone: "📊",
+          titulo: "Falando sobre frequência",
+          corpo: "Depois de aprender as tarefas de casa, podemos contar com que frequência as fazemos, usando <b>Yes</b> ou <b>No</b> em uma pesquisa (<i>survey</i>) ou até montando um gráfico (<i>graph</i>) com as respostas.",
+          dica: "'Survey' = pesquisa; 'graph' = gráfico."
+        },
+        {
+          icone: "🗓️",
+          titulo: "Dias da semana e ajuda em casa",
+          corpo: "É comum organizar as tarefas de casa pelos dias da semana:<br><br>Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday.",
+          dica: "Nos livros de inglês, os dias da semana sempre começam com letra maiúscula!"
+        }
+      ],
+      flashcards: [
+        { frente: "How do you say 'arrumar a cama' in English?", verso: "Make the bed." },
+        { frente: "How do you say 'regar as plantas' in English?", verso: "Water the plants." },
+        { frente: "How do you say 'lavar a louça' in English?", verso: "Wash the dishes." },
+        { frente: "Complete: 'She ___ (walk) the dog every morning.'", verso: "walks (Simple Present, 3ª pessoa recebe -s)." },
+        { frente: "How do you make a question with 'he' in Simple Present?", verso: "Usando 'Does' + sujeito + verbo na forma base. Ex: Does he wash the dishes?" },
+        { frente: "What's the difference between 'Can you help me?' and 'Can I do it?'?", verso: "'Can you...?' pede um favor; 'Can I...?' pede permissão." },
+        { frente: "Name two chores you might do at home in English.", verso: "Exemplos: make the bed, water the plants, wash the dishes, do the shopping." },
+        { frente: "What day comes after 'Wednesday'?", verso: "Thursday." }
+      ]
+    }
+  ],
+  questoes: [
+    {
+      pergunta: "How do you say 'palhaço' in English?",
+      provas: ["abrangentes"],
+      opcoes: ["Clown", "Acrobat", "Juggler", "Circus"],
+      correta: 0,
+      explicacao: "'Clown' é a palavra em inglês para 'palhaço'."
+    },
+    {
+      pergunta: "How do you say 'malabarista' in English?",
+      provas: ["abrangentes"],
+      opcoes: ["Clown", "Acrobat", "Juggler", "Trapeze"],
+      correta: 2,
+      explicacao: "'Juggler' é a palavra em inglês para 'malabarista' — alguém que faz malabarismo (juggling)."
+    },
+    {
+      pergunta: "Circus acrobats are good at using their:",
+      provas: ["abrangentes"],
+      opcoes: ["Muscles", "Books", "Cars", "Phones"],
+      correta: 0,
+      explicacao: "O texto do livro diz que acrobatas usam seus músculos (muscles) nas apresentações."
+    },
+    {
+      pergunta: "Jugglers are good at using their hands and:",
+      provas: ["abrangentes"],
+      opcoes: ["Feet", "Eyes", "Nose", "Ears"],
+      correta: 1,
+      explicacao: "O texto descreve os jugglers como bons em usar as mãos (hands) e os olhos (eyes)."
+    },
+    {
+      pergunta: "What's the opposite of 'left'?",
+      provas: ["abrangentes"],
+      opcoes: ["Under", "Right", "Next to", "On"],
+      correta: 1,
+      explicacao: "'Right' (direita) é o oposto de 'left' (esquerda)."
+    },
+    {
+      pergunta: "In 'It's on the left, next to the box', the expression 'next to' means:",
+      provas: ["abrangentes"],
+      opcoes: ["Ao lado de", "Embaixo de", "Em cima de", "Longe de"],
+      correta: 0,
+      explicacao: "'Next to' significa 'ao lado de' em português."
+    },
+    {
+      pergunta: "Complete with Present Continuous: 'Look! The girl ___ a rope!'",
+      provas: ["abrangentes"],
+      opcoes: ["climb", "climbs", "is climbing", "climbed"],
+      correta: 2,
+      explicacao: "Para descrever uma ação acontecendo agora, usamos is/are + verbo-ing: 'is climbing'."
+    },
+    {
+      pergunta: "'An acrobat flies on the trapeze!' — this sentence describes:",
+      provas: ["abrangentes"],
+      opcoes: ["An action happening right now", "A routine that always happens", "Something that happened yesterday", "A question"],
+      correta: 0,
+      explicacao: "A frase descreve uma ação sendo observada no momento, como em uma cena do circo sendo descrita ao vivo."
+    },
+    {
+      pergunta: "'Can you throw a ball?' is a question about:",
+      provas: ["abrangentes"],
+      opcoes: ["Ability (habilidade)", "Location (localização)", "Time (tempo)", "Color (cor)"],
+      correta: 0,
+      explicacao: "'Can' é usado para perguntar sobre a habilidade de fazer algo."
+    },
+    {
+      pergunta: "The correct short answer to 'Can you juggle?' (yes) is:",
+      provas: ["abrangentes"],
+      opcoes: ["Yes, I can", "Yes, I do", "Yes, I am", "Yes, I juggle"],
+      correta: 0,
+      explicacao: "A resposta curta correta para perguntas com 'can' repete o próprio 'can': 'Yes, I can'."
+    },
+    {
+      pergunta: "How do you write the number 33 in English?",
+      provas: ["abrangentes"],
+      opcoes: ["Thirty", "Thirteen", "Thirty-three", "Three-three"],
+      correta: 2,
+      explicacao: "33 se escreve 'thirty-three' em inglês."
+    },
+    {
+      pergunta: "How do you write the number 47 in English?",
+      provas: ["abrangentes"],
+      opcoes: ["Fourteen-seven", "Forty-seven", "Four-seven", "Seventeen"],
+      correta: 1,
+      explicacao: "47 se escreve 'forty-seven' em inglês."
+    },
+    {
+      pergunta: "Complete: 'There are ___ clowns in the circus.'",
+      provas: ["abrangentes"],
+      opcoes: ["some", "a", "an", "the only"],
+      correta: 0,
+      explicacao: "'Some' é usado para indicar uma quantidade indefinida, maior que um: 'there are some clowns'."
+    },
+    {
+      pergunta: "How do you say 'arrumar a cama' in English?",
+      provas: ["abrangentes"],
+      opcoes: ["Make the bed", "Wash the dishes", "Water the plants", "Do the shopping"],
+      correta: 0,
+      explicacao: "'Make the bed' significa 'arrumar a cama'."
+    },
+    {
+      pergunta: "How do you say 'regar as plantas' in English?",
+      provas: ["abrangentes"],
+      opcoes: ["Make breakfast", "Water the plants", "Help with pets", "Set the table"],
+      correta: 1,
+      explicacao: "'Water the plants' significa 'regar as plantas'."
+    },
+    {
+      pergunta: "Complete with Simple Present: 'He ___ (wash) the dishes after lunch.'",
+      provas: ["abrangentes"],
+      opcoes: ["wash", "washes", "is washing", "washed"],
+      correta: 1,
+      explicacao: "No Simple Present, verbos com 'he/she/it' recebem -s: 'wash' vira 'washes'."
+    },
+    {
+      pergunta: "Complete with Simple Present: 'She ___ (walk) the dog before school.'",
+      provas: ["abrangentes"],
+      opcoes: ["walk", "walks", "is walking", "walked"],
+      correta: 1,
+      explicacao: "No Simple Present, verbos com 'he/she/it' recebem -s: 'walk' vira 'walks'."
+    },
+    {
+      pergunta: "Which question word helps ask about 'he/she/it' in Simple Present?",
+      provas: ["abrangentes"],
+      opcoes: ["Do", "Does", "Can", "Is"],
+      correta: 1,
+      explicacao: "'Does' é usado para perguntas no Simple Present com he/she/it."
+    },
+    {
+      pergunta: "Choose the correct question:",
+      provas: ["abrangentes"],
+      opcoes: ["Does he washes the dishes?", "Does he wash the dishes?", "Do he wash the dishes?", "Is he wash the dishes?"],
+      correta: 1,
+      explicacao: "Com 'does', o verbo principal volta para a forma base, sem o -s: 'Does he wash the dishes?'."
+    },
+    {
+      pergunta: "The correct short answer to 'Does she walk the dog?' (yes) is:",
+      provas: ["abrangentes"],
+      opcoes: ["Yes, she does", "Yes, she walks", "Yes, she is", "Yes, she do"],
+      correta: 0,
+      explicacao: "A resposta curta correta repete o auxiliar 'does': 'Yes, she does'."
+    },
+    {
+      pergunta: "'Can you help me with the dishes?' is used to:",
+      provas: ["abrangentes"],
+      opcoes: ["Ask for a favor", "Give an order", "Describe the past", "Talk about colors"],
+      correta: 0,
+      explicacao: "'Can you...?' é usado para pedir um favor a alguém."
+    },
+    {
+      pergunta: "'Can I do it?' is used to:",
+      provas: ["abrangentes"],
+      opcoes: ["Ask for permission", "Describe a place", "Talk about numbers", "Give an instruction"],
+      correta: 0,
+      explicacao: "'Can I...?' é usado para pedir permissão para fazer algo."
+    },
+    {
+      pergunta: "Which day comes right after Wednesday?",
+      provas: ["abrangentes"],
+      opcoes: ["Tuesday", "Thursday", "Friday", "Monday"],
+      correta: 1,
+      explicacao: "A ordem dos dias é: ...Tuesday, Wednesday, Thursday, Friday... Logo, depois de Wednesday vem Thursday."
+    },
+    {
+      pergunta: "'Do the shopping' means:",
+      provas: ["abrangentes"],
+      opcoes: ["Fazer compras", "Fazer a cama", "Regar as plantas", "Passear com o cachorro"],
+      correta: 0,
+      explicacao: "'Do the shopping' significa 'fazer compras'."
+    },
+    {
+      pergunta: "A 'survey' in the context of chores is used to:",
+      provas: ["abrangentes"],
+      opcoes: ["Collect Yes/No answers about who does what", "Cook a meal", "Draw a picture", "Play a game"],
+      correta: 0,
+      explicacao: "Uma 'survey' (pesquisa) coleta respostas, como Yes/No, sobre quem faz quais tarefas."
     }
   ]
 };
